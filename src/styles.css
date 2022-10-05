@@ -22778,7 +22778,8 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
 .menu-vertical .menu-block,
 .menu-vertical .menu-inner > .menu-item,
 .menu-vertical .menu-inner > .menu-header {
-  width: 16.25rem;
+  width: 14.70rem;
+
 }
 .menu-vertical .menu-inner {
   flex-direction: column;
@@ -22805,7 +22806,7 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
   font-weight: 600;
 }
 .menu-vertical .menu-item .menu-toggle {
-  padding-right: calc(1rem + 1.26em);
+  /* padding-right: calc(1rem + 1.26em); */
 }
 .menu-vertical .menu-item .menu-toggle::after {
   right: 1rem;
@@ -22831,7 +22832,7 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
 }
 @media (max-width: 1199.98px) {
   .menu-vertical .menu-sub .menu-icon {
-    display: none;
+    /* display: none; */
   }
 }
 .menu-vertical .menu-horizontal-wrapper {

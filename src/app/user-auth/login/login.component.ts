@@ -23,5 +23,6 @@ export class LoginComponent implements OnInit {
       passInput.type = "text"
     }
   }
+  
 
 }

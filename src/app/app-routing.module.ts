@@ -1,3 +1,4 @@
+import { MyaccountComponent } from './user-dashboard/myaccount/myaccount.component';
 import { PageNotFountComponent } from './page-not-fount/page-not-fount.component';
 import { HomeComponent } from './user-dashboard/home/home.component';
 import { ForgetPasswordComponent } from './user-auth/forget-password/forget-password.component';
@@ -25,6 +26,16 @@ const routes: Routes = [
     path:"",
     component:HomeComponent,
   },{
+    path:"myaccount",
+    pathMatch:"full",
+    component:MyaccountComponent
+  },
+
+
+
+
+
+  {
     path:"**",
     component:PageNotFountComponent
   }
