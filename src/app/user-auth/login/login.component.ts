@@ -1,6 +1,8 @@
+import { UserServicesService } from './../../services/user-services.service';
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private toaster:ToastrService) { }
+  constructor(private toaster:ToastrService,private userService:UserServicesService,private router:Router) { }
 
   is_checked:boolean=false;
   public user={
@@ -51,9 +53,15 @@ export class LoginComponent implements OnInit {
         this.toaster.error("Please Enter Password")
         return;
       }else{
-        //api call
-        //check the response comes or not
-        this.toaster.success("success")
+        this.userService.loginUser(this.user).subscribe((e)=>{
+          if(e.status == 200){
+            Swal.fire("Success",e.msg,"success")
+          }else if(e.status == 404){
+            Swal.fire("Error",e.msg,"error")
+          }else{
+            Swal.fire("Error","Something went wrong","error")
+          }
+        })
       }
     }
   }

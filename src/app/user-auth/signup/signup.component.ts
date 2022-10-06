@@ -1,6 +1,8 @@
+import { Router } from '@angular/router';
+import { UserServicesService } from './../../services/user-services.service';
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private toaster:ToastrService) { }
+  constructor(private toaster:ToastrService, private userService:UserServicesService,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -43,7 +45,7 @@ export class SignupComponent implements OnInit {
     if(this.is_checked == false){
       this.toaster.warning("Please Read Terms and Condition Onces")
     }else{
-      
+
       if(this.user.firstName.trim().length==0 || this.user.firstName ==""){
         this.toaster.error("Please Enter FirstName")
         return;
@@ -75,9 +77,28 @@ export class SignupComponent implements OnInit {
         this.toaster.error("Please Enter Phonenumber with 10 Digits")
         return;
       }else{
-        this.toaster.success("Success")
         //api call
-        return
+
+        this.userService.signUpUser(this.user).subscribe((e)=>{
+
+          if(e.status == 200){
+            Swal.fire("Success",e.msg,"success")
+            this.router.navigateByUrl("/login")
+          }else if(e.status == 400){
+            Swal.fire("Error",e.msg,"error")
+          }else{
+            Swal.fire("Error","Something went wrong","error")
+          }
+        },error=>{
+          if(error.status==400){
+            // this.toaster.error("Duplicate User")
+            Swal.fire("Error","Duplicate User Found","error")
+
+          }else{
+            // this.toaster.error("Something went wrong")
+            Swal.fire("Error","Something went wrong","error")
+          }
+        })
       }
 
     }
