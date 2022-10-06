@@ -24,7 +24,8 @@ import { MyconnectionsComponent } from './myconnections/myconnections.component'
   exports:[
     HomeComponent,
     NavbarComponent,
-    MyaccountComponent
+    MyaccountComponent,
+    SidebarComponent
 
   ]
 })

@@ -23,9 +23,26 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/vendor/js/menu.js",
+              "src/js/menu.js",
+              "src/js/helpers.js",
+              "src/js/bootstrap.js",
+              "src/assets/js/config.js",
+              "src/assets/js/dashboards-analytics.js",
+              "src/assets/js/extended-ui-perfect-scrollbar.js",
+              "src/assets/js/form-basic-inputs.js",
+              "src/assets/js/main.js",
+              "src/assets/js/pages-account-settings-account.js",
+              "src/assets/js/ui-modals.js",
+              "src/assets/js/ui-popover.js",
+              "src/assets/js/ui-toasts.js",
+              "src/assets/vendor/js/bootstrap.js",
+              "src/assets/vendor/js/helpers.js"
+            ]
           },
           "configurations": {
             "production": {

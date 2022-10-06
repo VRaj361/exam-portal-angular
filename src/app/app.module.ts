@@ -1,3 +1,4 @@
+import { SidebarComponent } from './user-dashboard/sidebar/sidebar.component';
 import { MyaccountComponent } from './user-dashboard/myaccount/myaccount.component';
 import { HomeComponent } from './user-dashboard/home/home.component';
 import { UserDashboardModule } from './user-dashboard/user-dashboard.module';
@@ -10,13 +11,17 @@ import { AppComponent } from './app.component';
 import { UserAuthModule } from './user-auth/user-auth.module';
 import { CssJsFilesComponent } from './css-js-files/css-js-files.component';
 import { PageNotFountComponent } from './page-not-fount/page-not-fount.component';
-
-import { NavbarComponent } from './user-dashboard/navbar/navbar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
     CssJsFilesComponent,
     PageNotFountComponent,
+    DashboardComponent,
 
   ],
   imports: [
@@ -24,7 +29,9 @@ import { NavbarComponent } from './user-dashboard/navbar/navbar.component';
     AppRoutingModule,
     UserAuthModule,
     UserDashboardModule,
-    
+    FormsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
 
 
   ],

@@ -1,3 +1,6 @@
+import { HomeContentComponent } from './user-dashboard/home-content/home-content.component';
+import { MyconnectionsComponent } from './user-dashboard/myconnections/myconnections.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { MyaccountComponent } from './user-dashboard/myaccount/myaccount.component';
 import { PageNotFountComponent } from './page-not-fount/page-not-fount.component';
 import { HomeComponent } from './user-dashboard/home/home.component';
@@ -24,11 +27,25 @@ const routes: Routes = [
 		pathMatch:"full"
   },{
     path:"",
-    component:HomeComponent,
-  },{
-    path:"myaccount",
-    pathMatch:"full",
-    component:MyaccountComponent
+    component:DashboardComponent,
+    children:[
+      {
+        path:"myaccount",
+        pathMatch:"full",
+        component:MyaccountComponent
+      },
+      {
+        path:"myconnections",
+        pathMatch:"full",
+        component:MyconnectionsComponent
+      },
+
+      {
+        path:"",
+        pathMatch:"full",
+        component:HomeContentComponent
+      },
+    ]
   },
 
 
