@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   is_checked:boolean=false;
   public user={
-    email:"",
+    username:"",
     password:""
   }
 
@@ -41,11 +42,11 @@ export class LoginComponent implements OnInit {
     if(this.is_checked==false){
       this.toaster.warning("Please Check Remember me");
     }else{
-      if(this.user.email.trim().length==0 || this.user.email ==""){
+      if(this.user.username.trim().length==0 || this.user.username ==""){
         this.toaster.error("Please Enter Email")
         return;
       }
-      if(!this.emailRegex.test(this.user.email)){
+      if(!this.emailRegex.test(this.user.username)){
         this.toaster.error("Please Enter Email as XXX@XX.XXX")
         return;
       }
@@ -53,15 +54,29 @@ export class LoginComponent implements OnInit {
         this.toaster.error("Please Enter Password")
         return;
       }else{
-        this.userService.loginUser(this.user).subscribe((e)=>{
-          if(e.status == 200){
-            Swal.fire("Success",e.msg,"success")
-          }else if(e.status == 404){
-            Swal.fire("Error",e.msg,"error")
-          }else{
+        this.userService.generateToken(this.user).subscribe((e)=>{
+          
+          if(e != null){
+            const headers={
+              "Authorization":e.token
+            }
+            this.userService.loginUser(this.user,headers).subscribe((e)=>{
+              if(e.status == 200){
+                Swal.fire("Success",e.msg,"success")
+              }else if(e.status == 404){
+                Swal.fire("Error",e.msg,"error")
+              }else{
+                Swal.fire("Error","Something went wrong","error")
+              }
+            })
+          }
+          else{
             Swal.fire("Error","Something went wrong","error")
           }
+        },()=>{
+          Swal.fire("Error","Something went wrong","error")
         })
+
       }
     }
   }

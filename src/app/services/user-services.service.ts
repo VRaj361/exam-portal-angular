@@ -13,12 +13,22 @@ export class UserServicesService {
     return this.httpClient.post(environment.url+"/user/signup",user)
   }
 
-  loginUser(user:any):Observable<any>{
-    return this.httpClient.post(environment.url+"/user/login",user)
+  loginUser(user:any,headers:any):Observable<any>{
+    return this.httpClient.post(environment.url+"/user/login",user,{headers})
   }
 
-  forgotPassword(user:any):Observable<any>{
-    return this.httpClient.post(environment.url+"/user/forgotpassword",user)
-  }
+  forgotPassword(user:any,headers:any):Observable<any>{
+    return this.httpClient.post(environment.url+"/user/forgotpassword",user,{headers})
+  }//incomplete
+
+  generateToken(user:any):Observable<any>{
+    return this.httpClient.post(environment.url+"/generate-token",user)
+  }//email and password both required
+
+  generateTokenForForgetPassword(user:any):Observable<any>{
+    return this.httpClient.post(environment.url+"/generate-tokens",user)
+  }//email required
+
+
 
 }

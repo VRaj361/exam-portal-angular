@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
 
   is_checked:boolean=false;
   public user={
-    email:"",
+    username:"",
     password:"",
     firstName:"",
     lastName:"",
@@ -53,11 +53,11 @@ export class SignupComponent implements OnInit {
       if(this.user.lastName.trim().length==0 || this.user.lastName ==""){
         this.toaster.error("Please Enter LastName")
         return;
-      }if(this.user.email.trim().length==0 || this.user.email ==""){
+      }if(this.user.username.trim().length==0 || this.user.username ==""){
         this.toaster.error("Please Enter Email")
         return;
       }
-      if(!this.emailRegex.test(this.user.email)){
+      if(!this.emailRegex.test(this.user.username)){
         this.toaster.error("Please Enter Email as XXX@XX.XXX")
         return;
       }
@@ -77,8 +77,6 @@ export class SignupComponent implements OnInit {
         this.toaster.error("Please Enter Phonenumber with 10 Digits")
         return;
       }else{
-        //api call
-
         this.userService.signUpUser(this.user).subscribe((e)=>{
 
           if(e.status == 200){
@@ -99,6 +97,7 @@ export class SignupComponent implements OnInit {
             Swal.fire("Error","Something went wrong","error")
           }
         })
+
       }
 
     }
