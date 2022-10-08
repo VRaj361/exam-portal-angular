@@ -1,4 +1,4 @@
-import { UserServicesService } from './../../services/user-services.service';
+import { ForgotpasswordService } from './../../services/forgotpassword.service';
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 })
 export class ForgetPasswordComponent implements OnInit {
 
-  constructor(private toaster:ToastrService,private userService:UserServicesService) { }
+  constructor(private toaster:ToastrService,private forgotpasswordService:ForgotpasswordService) { }
   public user={
     username:""
   }
@@ -28,12 +28,12 @@ export class ForgetPasswordComponent implements OnInit {
     }else{
       //api call
       this.toaster.success("Success")
-      this.userService.generateTokenForForgetPassword(this.user).subscribe((e)=>{
+      this.forgotpasswordService.generateTokenForForgetPassword(this.user).subscribe((e)=>{
         if(e != null){
           const headers={
             "Authorization":e.token
           }
-          this.userService.forgotPassword(this.user,headers).subscribe((e)=>{
+          this.forgotpasswordService.forgotPassword(this.user,headers).subscribe((e)=>{
             if(e.status == 200){
               Swal.fire("Success",e.msg,"success")
             }else if(e.status == 404){

@@ -1,5 +1,5 @@
+import { SignupService } from './../../services/signup.service';
 import { Router } from '@angular/router';
-import { UserServicesService } from './../../services/user-services.service';
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private toaster:ToastrService, private userService:UserServicesService,private router:Router) { }
+  constructor(private toaster:ToastrService, private signupService:SignupService,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -77,7 +77,7 @@ export class SignupComponent implements OnInit {
         this.toaster.error("Please Enter Phonenumber with 10 Digits")
         return;
       }else{
-        this.userService.signUpUser(this.user).subscribe((e)=>{
+        this.signupService.signUpUser(this.user).subscribe((e)=>{
 
           if(e.status == 200){
             Swal.fire("Success",e.msg,"success")

@@ -1,4 +1,4 @@
-import { UserServicesService } from './../../services/user-services.service';
+import { LoginService } from './../../services/login.service';
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private toaster:ToastrService,private userService:UserServicesService,private router:Router) { }
+  constructor(private toaster:ToastrService,private loginService:LoginService,private router:Router) { }
 
   is_checked:boolean=false;
   public user={
@@ -54,16 +54,25 @@ export class LoginComponent implements OnInit {
         this.toaster.error("Please Enter Password")
         return;
       }else{
-        this.userService.generateToken(this.user).subscribe((e)=>{
-          
-          if(e != null){
+        this.loginService.generateToken(this.user).subscribe((token)=>{
+
+          if(token != null){
             const headers={
-              "Authorization":e.token
+              "Authorization":token.token
             }
-            this.userService.loginUser(this.user,headers).subscribe((e)=>{
+            this.loginService.loginUser(this.user,headers).subscribe((e)=>{
               if(e.status == 200){
                 Swal.fire("Success",e.msg,"success")
-              }else if(e.status == 404){
+                this.loginService.storeToken(token.token);
+                if(e.data.authorities[0].authority === "Admin"){
+                  console.log("Admin")
+                }else if(e.data.authorities[0].authority === "Normal"){
+                  console.log("User")
+                }
+              }else if(e.status == 406){
+                Swal.fire("Error",e.msg,"error")
+              }
+              else if(e.status == 404){
                 Swal.fire("Error",e.msg,"error")
               }else{
                 Swal.fire("Error","Something went wrong","error")

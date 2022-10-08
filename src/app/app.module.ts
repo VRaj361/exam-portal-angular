@@ -29,7 +29,7 @@ import { HttpClientModule } from "@angular/common/http"
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UserAuthModule,
+
     UserDashboardModule,
     FormsModule,
     ToastrModule.forRoot(),
