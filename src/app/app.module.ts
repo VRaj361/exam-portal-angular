@@ -1,6 +1,6 @@
-import { SidebarComponent } from './user-dashboard/sidebar/sidebar.component';
-import { MyaccountComponent } from './user-dashboard/myaccount/myaccount.component';
-import { HomeComponent } from './user-dashboard/home/home.component';
+
+import { authInterceptorProvider } from './services/auth.interceptor';
+
 import { UserDashboardModule } from './user-dashboard/user-dashboard.module';
 
 import { NgModule } from '@angular/core';
@@ -16,7 +16,9 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from "@angular/common/http"
+import { HttpClientModule } from "@angular/common/http";
+import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { HttpClientModule } from "@angular/common/http"
     CssJsFilesComponent,
     PageNotFountComponent,
     DashboardComponent,
+    AdmindashboardComponent,
+
 
   ],
   imports: [
@@ -34,11 +38,12 @@ import { HttpClientModule } from "@angular/common/http"
     FormsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+
 
 
   ],
-  providers: [],
+  providers: [authInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

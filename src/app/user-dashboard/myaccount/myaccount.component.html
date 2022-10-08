@@ -4,12 +4,27 @@
   <div class="row">
     <div class="col-md-12">
       <ul class="nav nav-pills flex-column flex-md-row mb-3">
-        <li class="nav-item">
-          <a class="nav-link active " href="javascript:void(0);" style="background-color: #696cff;"><i class="bx bx-user me-1 "></i> Account</a>
+
+
+        <li class="nav-item" *ngIf="checkUserAdmin()">
+          <a class="nav-link active" routerLink="/admin/myaccount"  style="background-color: #696cff;"
+            ><i class="bx bx-user me-1"></i> Account</a
+          >
         </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" href="pages-account-settings-connections.html"><i class="bx bx-link-alt me-1"></i>
+        <li class="nav-item" *ngIf="!checkUserAdmin()">
+          <a class="nav-link active" routerLink="/user/myaccount"  style="background-color: #696cff;"
+            ><i class="bx bx-user me-1"></i> Account</a
+          >
+        </li>
+
+
+
+        <li class="nav-item" *ngIf="checkUserAdmin()" >
+          <a class="nav-link"  routerLink="/admin/myconnections"><i class="bx bx-link-alt me-1"></i>
+            Connections</a>
+        </li>
+        <li class="nav-item" *ngIf="!checkUserAdmin()">
+          <a class="nav-link"  routerLink="/user/myconnections"><i class="bx bx-link-alt me-1"></i>
             Connections</a>
         </li>
       </ul>

@@ -1,5 +1,7 @@
+import { Router } from '@angular/router';
+import { LoginService } from './../../services/login.service';
 import { Component, OnInit } from '@angular/core';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loginService:LoginService,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -18,5 +20,10 @@ export class NavbarComponent implements OnInit {
     }else{
       profileDetail.value = "dropdown-menu dropdown-menu-end show"
     }
+  }
+
+  logOut(){
+    this.loginService.doLogOut()
+    this.router.navigateByUrl("/login")
   }
 }

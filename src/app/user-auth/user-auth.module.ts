@@ -1,3 +1,5 @@
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 
 import { NgModule } from '@angular/core';
@@ -18,7 +20,9 @@ import { AppRoutingModule } from '../app-routing.module';
     CommonModule,
     FormsModule,
     AppRoutingModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    RouterModule,
+    NgxSpinnerModule
   ],
   exports:[
     ForgetPasswordComponent,

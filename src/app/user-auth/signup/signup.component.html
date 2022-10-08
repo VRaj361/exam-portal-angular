@@ -61,19 +61,19 @@
 
           <form id="formAuthentication" class="mb-3" method="POST">
             <div class="mb-3">
-              <label for="username" class="form-label">Firstname</label>
-                <input type="text" [(ngModel)]="user.firstName" class="form-control hover-outline" id="username" name="firstName" placeholder="Enter your fullname"
+              <label for="firstname" class="form-label">Firstname</label>
+                <input type="text" [(ngModel)]="user.firstName" class="form-control hover-outline" id="firstname" name="firstName" placeholder="Enter your fullname"
                 autofocus
                 />
             </div>
             <div class="mb-3">
-              <label for="username" class="form-label">Lastname</label>
-                <input type="text" [(ngModel)]="user.lastName" class="form-control hover-outline" id="username" name="lastName" placeholder="Enter your fullname"
+              <label for="lastname" class="form-label">Lastname</label>
+                <input type="text" [(ngModel)]="user.lastName" class="form-control hover-outline" id="lastname" name="lastName" placeholder="Enter your fullname"
                 autofocus
                 />
             </div>
             <div class="mb-3">
-              <label for="username"  class="form-label">Email</label>
+              <label for="email"  class="form-label">Email</label>
               <input type="text" [(ngModel)]="user.username" class="form-control hover-outline" id="username" name="username" placeholder="Enter your email" />
             </div>
             <div class="mb-3 form-password-toggle">
@@ -108,7 +108,7 @@
 
           <p class="text-center">
             <span>Already have an account?</span>
-            <a href="/login">
+            <a routerLink="/login">
               <span>Sign in instead</span>
             </a>
           </p>
@@ -122,6 +122,7 @@
 <!-- / Content -->
 
 <div class="buy-now">
-  <a href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/" target="_blank"
+  <a routerLink="https://themeselection.com/products/sneat-bootstrap-html-admin-template/" target="_blank"
     class="btn btn-danger btn-buy-now">Security is our main Priority</a>
 </div>
+<ngx-spinner bdColor = "rgba(255,255,255,0.90)" size = "large" color = "#696cff" type = "ball-spin-clockwise-fade" [fullScreen] = "true"></ngx-spinner>

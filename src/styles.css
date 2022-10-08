@@ -24346,7 +24346,10 @@ html:not(.layout-footer-fixed) .content-wrapper {
   border-color: rgba(105, 122, 141, 0.0783835294);
 }
 
-  
 
 
 
+
+a{
+  cursor: pointer;
+}

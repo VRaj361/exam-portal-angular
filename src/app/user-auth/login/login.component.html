@@ -88,7 +88,7 @@
               <div class="mb-3 form-password-toggle">
                 <div class="d-flex justify-content-between">
                   <label class="form-label" for="password">Password</label>
-                  <a href='/forgetpassword' routerLinkActive="router-link-active"  >
+                  <a routerLink='/forgetpassword' routerLinkActive="router-link-active"  >
                     <small>Forgot Password?</small>
 
                   </a>
@@ -104,7 +104,7 @@
                     placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                     aria-describedby="password"
                   />
-                  <span class="input-group-text cursor-pointer"><i class="bx bx-hide" #passwordbtn (click)="getShowPassword(passwordbtn.classList,passwordinput)"></i></span>
+                  <span class="input-group-text cursor-pointer"><i class="bx bx-hide"    ></i></span>
                 </div>
               </div>
               <div class="mb-3">
@@ -120,7 +120,7 @@
 
             <p class="text-center">
               <span>New on our platform?</span>
-              <a href='/signup'>
+              <a routerLink='/signup'>
                 <span>Create an account</span>
               </a>
             </p>
@@ -135,13 +135,13 @@
 
   <div class="buy-now">
     <a
-      href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
+      routerLink="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
       target="_blank"
       class="btn btn-danger btn-buy-now"
       >Security is our main Priority</a
     >
   </div>
 
-
+  <ngx-spinner bdColor = "rgba(255,255,255,0.90)" size = "large" color = "#696cff" type = "ball-spin-clockwise-fade" [fullScreen] = "true"></ngx-spinner>
 
 

@@ -1,16 +1,26 @@
+import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
+import { AdminGuard } from './services/admin.guard';
+import { UserGuard } from './services/user.guard';
+
+import { AdminHomeContentComponent } from './user-dashboard/admin-home-content/admin-home-content.component';
 import { HomeContentComponent } from './user-dashboard/home-content/home-content.component';
 import { MyconnectionsComponent } from './user-dashboard/myconnections/myconnections.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MyaccountComponent } from './user-dashboard/myaccount/myaccount.component';
 import { PageNotFountComponent } from './page-not-fount/page-not-fount.component';
-import { HomeComponent } from './user-dashboard/home/home.component';
+
 import { ForgetPasswordComponent } from './user-auth/forget-password/forget-password.component';
 import { LoginComponent } from './user-auth/login/login.component';
 import { SignupComponent } from './user-auth/signup/signup.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
+
 
 const routes: Routes = [
+  {
+    path:"",
+    component:LoginComponent
+  },
 	{
 		path: "signup",
 		component:SignupComponent,
@@ -26,27 +36,51 @@ const routes: Routes = [
 		component:ForgetPasswordComponent,
 		pathMatch:"full"
   },{
-    path:"",
-    component:DashboardComponent,
+      path:"user",
+      component:DashboardComponent,
+      canActivate:[UserGuard],
+      children:[
+        {
+          path:"",
+          component:HomeContentComponent,
+
+        },
+        {
+          path: "myaccount",
+          component:MyaccountComponent,
+          pathMatch:"full"
+        },
+        {
+          path: "myconnections",
+          component:MyconnectionsComponent,
+          pathMatch:"full"
+        },
+
+      ],
+  },{
+    path:"admin",
+    component:AdmindashboardComponent,
+    canActivate:[AdminGuard],
     children:[
       {
-        path:"myaccount",
-        pathMatch:"full",
-        component:MyaccountComponent
+        path:"",
+        component:AdminHomeContentComponent,
+
       },
       {
-        path:"myconnections",
-        pathMatch:"full",
-        component:MyconnectionsComponent
+        path: "myaccount",
+        component:MyaccountComponent,
+        pathMatch:"full"
+      },
+      {
+        path: "myconnections",
+        component:MyconnectionsComponent,
+        pathMatch:"full"
       },
 
-      {
-        path:"",
-        pathMatch:"full",
-        component:HomeContentComponent
-      },
-    ]
+    ],
   },
+
 
 
 
