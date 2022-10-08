@@ -14,6 +14,8 @@ export class ForgotpasswordService {
     return this.httpClient.post(environment.url+"/user/forgotpassword",user,{headers})
   }//incomplete
 
+
+
   generateTokenForForgetPassword(user:any):Observable<any>{
     return this.httpClient.post(environment.url+"/generate-tokens",user)
   }//email required

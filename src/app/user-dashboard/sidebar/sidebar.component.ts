@@ -11,7 +11,6 @@ export class SidebarComponent implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit(): void {
-    // console.log(this.router.url)
 
   }
 
@@ -19,13 +18,20 @@ export class SidebarComponent implements OnInit {
 
   getClassSideBar(classSide:any,classSide1:any){
     this.url=this.router.url;
-    console.log(this.url+" "+classSide)
     if(this.url.includes("myaccout")){
       classSide = "menu-item active"
       classSide1 = "menu-item"
     }else if(this.url.includes("myconnections")){
       classSide1 = "menu-item active"
       classSide = "menu-item"
+    }
+  }
+
+  checkUserAdmin(){
+    if(this.router.url.includes("/admin")){
+      return true;
+    }else{
+      return false;
     }
   }
 

@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
 
             if (token != null) {
               const headers = {
-                "Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2cmFqQGdtYWlsLmNvbSIsImV4cCI6MTY2NTI3NzY4MSwiaWF0IjoxNjY1MjQxNjgxfQ.rW3RqhINVy-bb3X4lqAM6iZca2UCqOye4ZrJzSysTCQ"
+                "Authorization": token.token
               }
               this.loginService.loginUser(this.user, headers).subscribe((e) => {
                 this.spinner.hide()
@@ -75,10 +75,8 @@ export class LoginComponent implements OnInit {
                   this.loginService.storeToken(token.token);
                   // this.loginService.getCurrentUser().subscribe((e)=>{
                   if (e.data.authorities[0].authority === "Admin") {
-                    console.log("Admin")
                     this.router.navigateByUrl("/admin")
                   } else if (e.data.authorities[0].authority === "Normal") {
-                    console.log("User")
                     this.router.navigateByUrl("/user");
                   }
                   // })

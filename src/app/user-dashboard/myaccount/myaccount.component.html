@@ -56,29 +56,53 @@
             <div class="row">
               <div class="mb-3 col-md-6">
                 <label for="firstName" class="form-label">First Name</label>
-                <input class="form-control hover-outline" type="text" id="firstName" name="firstName" value="John" autofocus />
+                <input class="form-control hover-outline" type="text" [(ngModel)]="users.firstName" id="firstName" name="firstName"  autofocus />
               </div>
               <div class="mb-3 col-md-6">
                 <label for="lastName" class="form-label">Last Name</label>
-                <input class="form-control hover-outline" type="text" name="lastName" id="lastName" value="Doe" />
+                <input class="form-control hover-outline" [(ngModel)]="users.lastName" type="text" name="lastName" id="lastName" />
               </div>
               <div class="mb-3 col-md-6">
                 <label for="email" class="form-label">E-mail</label>
-                <input class="form-control hover-outline" type="text" id="email" name="email" value="john.doe@example.com"
+                <input class="form-control hover-outline" disabled="true" [(ngModel)]="users.username" type="text" id="email" name="email"
                   placeholder="john.doe@example.com" />
               </div>
-              <div class="mb-3 col-md-6">
+
+              <!-- <div class="mb-3 col-md-6">
                 <label for="organization" class="form-label">Organization</label>
                 <input type="text" class="form-control hover-outline" id="organization" name="organization" value="ThemeSelection" />
-              </div>
+              </div> -->
               <div class="mb-3 col-md-6">
                 <label class="form-label" for="phoneNumber">Phone Number</label>
                 <div class="input-group input-group-merge">
                   <span class="input-group-text">IN (+91)</span>
-                  <input type="text" id="phoneNumber" name="phoneNumber" class="form-control hover-outline"
+                  <input type="text" [(ngModel)]="users.phoneNum" id="phoneNumber" name="phoneNumber" class="form-control hover-outline"
                     placeholder="202 555 0111" />
                 </div>
               </div>
+              <div class="mb-3 col-md-4">
+                <label for="email" class="form-label">Password</label>
+                <input class="form-control hover-outline" disabled #passwordOld [(ngModel)]="users.password" type="password" id="password" name="password"
+                  placeholder="..........." />
+              </div>
+              <div class="mb-3 col-md-4">
+                <label for="email" class="form-label">Confirm Password</label>
+                <input class="form-control hover-outline"  type="password" #passwordnew id="password1" name="password1"
+                  placeholder="............." />
+              </div>
+              <div class="mb-3 col-md-4">
+                <label for="email" class="form-label">Check Password</label>
+                <button type="submit" class="btn btn-primary form-control  color-white" #showPassword (click)="getPasswordChange(passwordnew,passwordOld,showPassword)">Check Password</button>
+              </div>
+
+              <div class="mb-3 col-12 mb-0">
+                <div class="alert alert-primary">
+                  <h6 class="alert-heading fw-bold mb-1">You can change your password in few steps.</h6>
+                  <p class="mb-0">1) In Confirm Password Section you can enter your correct Password and Click on Check Password Option.</p>
+                  <p class="mb-0">2) If the Password is matched then you have option to change the Password. </p>
+                </div>
+              </div>
+
               <!-- <div class="mb-3 col-md-6">
                 <label for="address" class="form-label">Address</label>
                 <input type="text" class="form-control" id="address" name="address" placeholder="Address" />
@@ -168,7 +192,7 @@
               </div> -->
             </div>
             <div class="mt-2">
-              <button type="submit" class="btn btn-primary me-2 color-white">Save changes</button>
+              <button type="submit" class="btn btn-primary me-2 color-white" (click)="updateAccount()">Save changes</button>
               <button type="reset" class="btn btn-outline-secondary">Cancel</button>
             </div>
           </form>
@@ -197,3 +221,4 @@
   </div>
 </div>
 <!-- / Content -->
+<ngx-spinner bdColor = "rgba(255,255,255,0.90)" size = "large" color = "#696cff" type = "ball-spin-clockwise-fade" [fullScreen] = "true"></ngx-spinner>

@@ -1,3 +1,4 @@
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
@@ -28,7 +29,9 @@ import { AdminHomeContentComponent } from './admin-home-content/admin-home-conte
   imports: [
     BrowserModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    NgxSpinnerModule,
+    FormsModule
 
 
 
