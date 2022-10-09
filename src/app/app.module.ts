@@ -18,7 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from "@angular/common/http";
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -39,6 +39,7 @@ import { AdmindashboardComponent } from './admindashboard/admindashboard.compone
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     HttpClientModule,
+    NgxSpinnerModule
 
 
 

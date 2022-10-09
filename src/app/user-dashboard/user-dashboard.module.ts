@@ -31,7 +31,8 @@ import { AdminHomeContentComponent } from './admin-home-content/admin-home-conte
     CommonModule,
     RouterModule,
     NgxSpinnerModule,
-    FormsModule
+    FormsModule,
+    NgxSpinnerModule
 
 
 
