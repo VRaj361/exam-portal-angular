@@ -28,7 +28,12 @@
               "node_modules/ngx-spinner/animations/ball-spin-clockwise-fade.css"
             ],
             "scripts": [
-              "src/assets/js/helpers.js"
+              "src/assets/js/helpers.js",
+              "src/assets/js/config.js",
+              "src/assets/js/dashboards-analytics.js",
+              "src/assets/js/main.js",
+              "src/assets/js/menu.js",
+              "src/assets/js/bootstrap.js"
              ]
           },
           "configurations": {

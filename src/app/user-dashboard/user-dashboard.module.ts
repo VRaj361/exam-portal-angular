@@ -1,7 +1,7 @@
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { ToastrModule } from 'ngx-toastr';
+import { Toast, ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -13,6 +13,9 @@ import { HomeContentComponent } from './home-content/home-content.component';
 import { MyaccountComponent } from './myaccount/myaccount.component';
 import { MyconnectionsComponent } from './myconnections/myconnections.component';
 import { AdminHomeContentComponent } from './admin-home-content/admin-home-content.component';
+import { ShowQuizzesComponent } from './show-quizzes/show-quizzes.component';
+import { ShowCategoriesComponent } from './show-categories/show-categories.component';
+import { AddCategoriesComponent } from './add-categories/add-categories.component';
 
 
 
@@ -24,7 +27,10 @@ import { AdminHomeContentComponent } from './admin-home-content/admin-home-conte
     HomeContentComponent,
     MyaccountComponent,
     MyconnectionsComponent,
-    AdminHomeContentComponent
+    AdminHomeContentComponent,
+    ShowQuizzesComponent,
+    ShowCategoriesComponent,
+    AddCategoriesComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +38,7 @@ import { AdminHomeContentComponent } from './admin-home-content/admin-home-conte
     RouterModule,
     NgxSpinnerModule,
     FormsModule,
-    NgxSpinnerModule
+    ToastrModule
 
 
 
@@ -41,7 +47,10 @@ import { AdminHomeContentComponent } from './admin-home-content/admin-home-conte
 
     NavbarComponent,
     MyaccountComponent,
-    SidebarComponent
+    SidebarComponent,
+    ShowCategoriesComponent,
+    AddCategoriesComponent,
+    ShowQuizzesComponent
 
   ]
 })

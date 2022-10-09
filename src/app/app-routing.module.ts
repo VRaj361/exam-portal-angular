@@ -1,3 +1,6 @@
+import { AddCategoriesComponent } from './user-dashboard/add-categories/add-categories.component';
+import { ShowQuizzesComponent } from './user-dashboard/show-quizzes/show-quizzes.component';
+import { ShowCategoriesComponent } from './user-dashboard/show-categories/show-categories.component';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { AdminGuard } from './services/admin.guard';
 import { UserGuard } from './services/user.guard';
@@ -77,6 +80,21 @@ const routes: Routes = [
         component:MyconnectionsComponent,
         pathMatch:"full"
       },
+      {
+        path:"showCategories",
+        component:ShowCategoriesComponent,
+        pathMatch:"full"
+
+      },
+      {
+        path:"quizzes",
+        component:ShowQuizzesComponent,
+        pathMatch:"full"
+      },{
+        path:"addCategory",
+        component:AddCategoriesComponent,
+        pathMatch:"full"
+      }
 
     ],
   },
