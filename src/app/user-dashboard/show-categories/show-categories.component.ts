@@ -31,15 +31,26 @@ export class ShowCategoriesComponent implements OnInit {
   }
 
   deleteCategory(id:any){
-    this.spinner.show().then(()=>{
-      this.adminService.deleteCategory(id).subscribe((e)=>{
-        this.spinner.hide()
-        this.toaster.success("Category Delete Successfully")
-        this.category = this.category.filter(cate=>cate.categoryid!=id);
-      },()=>{
-        this.spinner.hide()
-        Swal.fire("Error","Somethings went wrong","error")
-      })
+
+    Swal.fire({
+      icon:'info',
+      title:'Are you sure to Delete?!..',
+      confirmButtonText:"Delete",
+      confirmButtonColor:"#03c3ec",
+      showCancelButton:true
+    }).then((result)=>{
+      if(result.isConfirmed){
+        this.spinner.show().then(()=>{
+          this.adminService.deleteCategory(id).subscribe((e)=>{
+            this.spinner.hide()
+            this.toaster.success("Category Delete Successfully")
+            this.category = this.category.filter(cate=>cate.categoryid!=id);
+          },()=>{
+            this.spinner.hide()
+            Swal.fire("Error","Somethings went wrong","error")
+          })
+        })
+      }
     })
   }
 

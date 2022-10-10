@@ -30,15 +30,25 @@ export class ShowQuizzesComponent implements OnInit {
   }
 
   deleteQuiz(id:any){
-    this.spinner.show().then(()=>{
-      this.adminService.deleteQuiz(id).subscribe((e)=>{
-        this.spinner.hide()
-        this.toaster.success("Quiz Delete Successfully")
-        this.quizzes = this.quizzes.filter(quiz=>quiz.quizid!=id);
-      },()=>{
-        this.spinner.hide()
-        Swal.fire("Error","Somethings went wrong","error")
-      })
+    Swal.fire({
+      icon:'info',
+      title:'Are you sure to Delete?!..',
+      confirmButtonText:"Delete",
+      confirmButtonColor:"#03c3ec",
+      showCancelButton:true
+    }).then((result)=>{
+      if(result.isConfirmed){
+        this.spinner.show().then(()=>{
+          this.adminService.deleteQuiz(id).subscribe((e)=>{
+            this.spinner.hide()
+            this.toaster.success("Quiz Delete Successfully")
+            this.quizzes = this.quizzes.filter(quiz=>quiz.quizid!=id);
+          },()=>{
+            this.spinner.hide()
+            Swal.fire("Error","Somethings went wrong","error")
+          })
+        })
+      }
     })
   }
 

@@ -56,7 +56,33 @@ export class AdminService {
     return this.httpClient.get(environment.url+"/quiz/particular",{headers:header})
   }
 
+  //questions
+  showQuestions():Observable<any>{
+    return this.httpClient.get(environment.url+"/question/")
+  }
 
+  deleteQuestion(id:any){
+    const header= { "questionid": id };
+    return this.httpClient.delete(environment.url+"/question/",{headers:header})
+  }
+
+  addQuestion(question:any):Observable<any>{
+    return this.httpClient.post(environment.url+"/question/",question);
+  }
+
+  editQuestion(question:any):Observable<any>{
+    return this.httpClient.put(environment.url+"/question/",question)
+  }
+
+  getQuestion(questionid:any):Observable<any>{
+    const header= { "questionid": questionid };
+    return this.httpClient.get(environment.url+"/question/particular",{headers:header})
+  }
+
+  getQuestionsOfQuiz(quizid:any):Observable<any>{
+    const header= { "quizid": quizid };
+    return this.httpClient.get(environment.url+"/question/quiz",{headers:header})
+  }
 }
 
 
