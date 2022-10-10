@@ -1,10 +1,11 @@
+
 import { LoginService } from './../../services/login.service';
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import '../../../assets/js/helpers.js'
-declare const Helpers: any;
+declare function initPasswordToggle(): any;
 import { NgxSpinnerService } from "ngx-spinner";
 
 
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // Helpers.init()
+    initPasswordToggle()
 
   }
 

@@ -1,9 +1,11 @@
+
 import { SignupService } from './../../services/signup.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from "ngx-spinner";
+declare function initPasswordToggle():any
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -14,6 +16,7 @@ export class SignupComponent implements OnInit {
   constructor(private toaster: ToastrService, private signupService: SignupService, private router: Router,private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    initPasswordToggle()
   }
 
   is_checked: boolean = false;
