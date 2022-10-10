@@ -1,3 +1,4 @@
+import { EditCategoryComponent } from './user-dashboard/edit-category/edit-category.component';
 import { AddCategoriesComponent } from './user-dashboard/add-categories/add-categories.component';
 import { ShowQuizzesComponent } from './user-dashboard/show-quizzes/show-quizzes.component';
 import { ShowCategoriesComponent } from './user-dashboard/show-categories/show-categories.component';
@@ -93,6 +94,11 @@ const routes: Routes = [
       },{
         path:"addCategory",
         component:AddCategoriesComponent,
+        pathMatch:"full"
+      }
+      ,{
+        path:"editCategory",
+        component:EditCategoryComponent,
         pathMatch:"full"
       }
 

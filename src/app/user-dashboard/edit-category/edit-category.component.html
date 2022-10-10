@@ -1,12 +1,12 @@
 <div class="col-xl" style="width: 98%; margin-top: 2%;">
   <div class="card mb-4">
     <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0">Add Category</h5>
+      <h5 class="mb-0">Edit Category</h5>
       <small class="text-muted float-end">*All Fields are Required</small>
     </div>
     <div class="card-body">
       <form method="post">
- 
+
         <div class="mb-3">
           <label class="form-label" for="basic-icon-default-company">Title of Category</label>
           <div class="input-group input-group-merge">
@@ -21,6 +21,7 @@
               aria-label="ACME Inc."
               aria-describedby="basic-icon-default-company2"
               name="title"
+              disabled="true"
               [(ngModel)]="category.title"
             />
           </div>
@@ -44,7 +45,7 @@
             ></textarea>
           </div>
         </div>
-        <button type="submit" (click)="addCategory()" class="btn btn-primary color-white">Add</button>
+        <button type="submit" (click)="editCategory()" class="btn btn-primary color-white">Edit</button>
       </form>
     </div>
   </div>

@@ -19,5 +19,17 @@ export class AdminService {
     return this.httpClient.delete(environment.url+"/category/",{headers:header})
   }
 
+  addCategory(category:any):Observable<any>{
+    return this.httpClient.post(environment.url+"/category/",category);
+  }
+
+  editCategory(category:any):Observable<any>{
+    return this.httpClient.put(environment.url+"/category/",category)
+  }
+
+  getCategory(categoryid:any):Observable<any>{
+    const header= { "categoryid": categoryid };
+    return this.httpClient.get(environment.url+"/category/particular",{headers:header})
+  }
 }
 

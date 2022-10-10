@@ -16,6 +16,7 @@ import { AdminHomeContentComponent } from './admin-home-content/admin-home-conte
 import { ShowQuizzesComponent } from './show-quizzes/show-quizzes.component';
 import { ShowCategoriesComponent } from './show-categories/show-categories.component';
 import { AddCategoriesComponent } from './add-categories/add-categories.component';
+import { EditCategoryComponent } from './edit-category/edit-category.component';
 
 
 
@@ -30,7 +31,8 @@ import { AddCategoriesComponent } from './add-categories/add-categories.componen
     AdminHomeContentComponent,
     ShowQuizzesComponent,
     ShowCategoriesComponent,
-    AddCategoriesComponent
+    AddCategoriesComponent,
+    EditCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,7 @@ import { AddCategoriesComponent } from './add-categories/add-categories.componen
     RouterModule,
     NgxSpinnerModule,
     FormsModule,
-    ToastrModule
+    ToastrModule.forRoot()
 
 
 
