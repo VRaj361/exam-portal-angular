@@ -33,28 +33,36 @@ export class EditCategoryComponent implements OnInit {
         })
       })
     }else{
+      this.router.navigateByUrl("/admin/showCategories")
       Swal.fire("Error","Somethings went wrong","error")
     }
   }
 
   editCategory(){
-    this.spinner.show().then(()=>{
-      this.adminService.editCategory(this.category).subscribe((e)=>{
-        this.spinner.hide()
-          if(e.status == 200){
-            this.toaster.success(e.msg)
-            this.router.navigateByUrl("/admin/showCategories")
-          }else if(e.status == 404){
-            Swal.fire("Error",e.msg,"error")
-          }else{
-            Swal.fire("Error","Somethings went wrong","error")
-          }
-        },()=>{
+    if(this.category.description == "" || this.category.description.trim().length == 0 ){
+      this.toaster.error("Description must not be empty")
+      return;
+    }else{
+      this.spinner.show().then(()=>{
+        this.adminService.editCategory(this.category).subscribe((e)=>{
           this.spinner.hide()
-          Swal.fire("Error","Somethings went wrong","error")
+            if(e.status == 200){
+              this.toaster.success(e.msg)
+              this.router.navigateByUrl("/admin/showCategories")
+            }else if(e.status == 404){
 
+              Swal.fire("Error",e.msg,"error")
+            }else{
+
+              Swal.fire("Error","Somethings went wrong","error")
+            }
+          },()=>{
+            this.spinner.hide()
+            Swal.fire("Error","Somethings went wrong","error")
+
+        })
       })
-    })
+    }
   }
 
 }

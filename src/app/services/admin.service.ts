@@ -10,6 +10,7 @@ export class AdminService {
 
   constructor(private httpClient:HttpClient) { }
 
+  //category
   showCategory():Observable<any>{
     return this.httpClient.get(environment.url+"/category/")
   }
@@ -31,5 +32,31 @@ export class AdminService {
     const header= { "categoryid": categoryid };
     return this.httpClient.get(environment.url+"/category/particular",{headers:header})
   }
+
+  //quizzes
+  showQuizzes():Observable<any>{
+    return this.httpClient.get(environment.url+"/quiz/")
+  }
+
+  deleteQuiz(id:any){
+    const header= { "quizid": id };
+    return this.httpClient.delete(environment.url+"/quiz/",{headers:header})
+  }
+
+  addQuiz(quiz:any):Observable<any>{
+    return this.httpClient.post(environment.url+"/quiz/",quiz);
+  }
+
+  editQuiz(quiz:any):Observable<any>{
+    return this.httpClient.put(environment.url+"/quiz/",quiz)
+  }
+
+  getQuiz(quizid:any):Observable<any>{
+    const header= { "quizid": quizid };
+    return this.httpClient.get(environment.url+"/quiz/particular",{headers:header})
+  }
+
+
 }
+
 

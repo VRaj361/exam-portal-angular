@@ -1,3 +1,5 @@
+import { EditQuizComponent } from './user-dashboard/edit-quiz/edit-quiz.component';
+import { AddQuizComponent } from './user-dashboard/add-quiz/add-quiz.component';
 import { EditCategoryComponent } from './user-dashboard/edit-category/edit-category.component';
 import { AddCategoriesComponent } from './user-dashboard/add-categories/add-categories.component';
 import { ShowQuizzesComponent } from './user-dashboard/show-quizzes/show-quizzes.component';
@@ -99,6 +101,14 @@ const routes: Routes = [
       ,{
         path:"editCategory",
         component:EditCategoryComponent,
+        pathMatch:"full"
+      },{
+        path:"addQuiz",
+        component:AddQuizComponent,
+        pathMatch:"full"
+      },{
+        path:"editQuiz",
+        component:EditQuizComponent,
         pathMatch:"full"
       }
 

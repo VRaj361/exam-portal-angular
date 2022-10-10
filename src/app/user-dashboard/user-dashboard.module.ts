@@ -17,6 +17,8 @@ import { ShowQuizzesComponent } from './show-quizzes/show-quizzes.component';
 import { ShowCategoriesComponent } from './show-categories/show-categories.component';
 import { AddCategoriesComponent } from './add-categories/add-categories.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { AddQuizComponent } from './add-quiz/add-quiz.component';
+import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
 
 
 
@@ -32,7 +34,9 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
     ShowQuizzesComponent,
     ShowCategoriesComponent,
     AddCategoriesComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    AddQuizComponent,
+    EditQuizComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,10 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
     SidebarComponent,
     ShowCategoriesComponent,
     AddCategoriesComponent,
-    ShowQuizzesComponent
+    ShowQuizzesComponent,
+    AddQuizComponent,
+    EditCategoryComponent,
+    EditQuizComponent
 
   ]
 })
