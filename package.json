@@ -18,6 +18,8 @@
     "@angular/platform-browser": "^14.1.0",
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
+    "@ckeditor/ckeditor5-angular": "^4.0.0",
+    "@ckeditor/ckeditor5-build-classic": "^35.2.1",
     "@sweetalert2/theme-material-ui": "^5.0.12",
     "ngx-spinner": "^14.0.0",
     "ngx-toastr": "^15.2.0",

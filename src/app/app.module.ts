@@ -19,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from "@angular/common/http";
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +33,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   imports: [
     BrowserModule,
     AppRoutingModule,
-
+    CKEditorModule,
     UserDashboardModule,
     FormsModule,
     ToastrModule.forRoot(),

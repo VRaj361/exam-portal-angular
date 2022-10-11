@@ -102,6 +102,13 @@ export class ShowQuizzesComponent implements OnInit {
         Swal.fire("Error","Somethings went wrong","error")
       })
     })
+
+  }
+
+
+  showQuestions(id:any){
+    sessionStorage.setItem("quizid",id)
+    this.router.navigateByUrl("/admin/showQuestions")
   }
 
 }

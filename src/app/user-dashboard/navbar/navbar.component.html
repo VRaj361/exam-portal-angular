@@ -94,7 +94,7 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-end " #profileDetail>
           <li>
-            <a class="dropdown-item" href="#">
+
               <div class="d-flex">
                 <div class="flex-shrink-0 me-3">
                   <div class="avatar avatar-online">
@@ -103,10 +103,10 @@
                 </div>
                 <div class="flex-grow-1">
                   <span class="fw-semibold d-block">{{(users.firstName+" "+users.lastName).substring(0,13)}}</span>
-                  <small class="text-muted">{{users.authorities[0].authority=="Admin"?"Admin":"User"}}</small>
+                  <small class="text-muted">{{this.authority}}</small>
                 </div>
               </div>
-            </a>
+
           </li>
           <li>
             <div class="dropdown-divider"></div>

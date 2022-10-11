@@ -12,10 +12,11 @@
     <div class="card-body">
 
       <p class="card-text m-2">Description : {{q.description}}</p>
-      <button  class="btn btn-primary m-2 border-purple color-white">Total Marks {{q.maxMarks}}</button>
-      <button  class="btn btn-primary m-2 border-purple color-white">Total Number of Questions {{q.numberOfQuestions}}</button>
-      <button  class="btn btn-primary m-2 border-purple color-white">Each Question {{q.maxMarks/q.numberOfQuestions}} marks</button>
-      <button  class="btn btn-primary m-2 border-purple color-white">{{q.category.title}}</button>
+      <button  class="btn btn-primary m-2  color-white">Total Marks {{q.maxMarks}}</button>
+      <button  class="btn btn-primary m-2  color-white">Total Number of Questions {{q.numberOfQuestions}}</button>
+      <button  class="btn btn-primary m-2  color-white">Each Question {{q.maxMarks/q.numberOfQuestions}} marks</button>
+      <button  class="btn btn-primary m-2  color-white">{{q.category.title}}</button>
+      <button  class="btn btn-primary m-2 border-purple color-white" (click)="showQuestions(q.quizid)">Show Questions</button>
     </div>
   </div>
 </div>

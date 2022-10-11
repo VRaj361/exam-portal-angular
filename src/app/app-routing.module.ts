@@ -1,3 +1,6 @@
+import { EditQuestionComponent } from './user-dashboard/edit-question/edit-question.component';
+import { AddQuestionComponent } from './user-dashboard/add-question/add-question.component';
+import { ShowQuizQuestionsComponent } from './user-dashboard/show-quiz-questions/show-quiz-questions.component';
 import { EditQuizComponent } from './user-dashboard/edit-quiz/edit-quiz.component';
 import { AddQuizComponent } from './user-dashboard/add-quiz/add-quiz.component';
 import { EditCategoryComponent } from './user-dashboard/edit-category/edit-category.component';
@@ -109,6 +112,18 @@ const routes: Routes = [
       },{
         path:"editQuiz",
         component:EditQuizComponent,
+        pathMatch:"full"
+      },{
+        path:"showQuestions",
+        component:ShowQuizQuestionsComponent,
+        pathMatch:"full"
+      },{
+        path:"addQuestion",
+        component:AddQuestionComponent,
+        pathMatch:"full"
+      },{
+        path:"editQuestion",
+        component:EditQuestionComponent,
         pathMatch:"full"
       }
 

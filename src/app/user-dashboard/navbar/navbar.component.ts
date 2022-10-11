@@ -13,12 +13,14 @@ export class NavbarComponent implements OnInit {
 
   constructor(private loginService: LoginService, private router: Router, private spinner: NgxSpinnerService) { }
   users:any={}
+  authority:any="";
   ngOnInit(): void {
     this.spinner.show().then(() => {
       this.loginService.getCurrentUser().subscribe((data) => {
         this.spinner.hide()
         this.users = data;
-        console.log(data)
+        this.authority = data.authorities["0"].authority=="Admin"?"Admin":"User"
+
       }, error => {
         this.spinner.hide()
         Swal.fire("Error", "Somethings went wrong", "error")
