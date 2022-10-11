@@ -42,7 +42,7 @@ export class MyaccountComponent implements OnInit {
       return;
     } else {
       const headers = {
-        "Authorization": localStorage.getItem("token")
+        "Authorization": sessionStorage.getItem("token")
       }
       this.spinner.show().then(() => {
 

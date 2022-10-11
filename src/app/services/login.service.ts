@@ -19,22 +19,22 @@ export class LoginService {
   }//email and password both required
 
   storeToken(token:any){
-    localStorage.setItem("token",token)
+    sessionStorage.setItem("token",token)
   }//store token in local storage
 
   isLoggedIn(){
-    const token = localStorage.getItem("token")
+    const token = sessionStorage.getItem("token")
     return token == undefined || token == null || token == ""?false:true;
   }//already login or not
 
   doLogOut(){
-    localStorage.removeItem("token")
+    sessionStorage.clear()
     Swal.fire("Success","Logout Successfully","success")
     return true;
   }//remove the token in localstorage
 
   getToken(){
-    return localStorage.getItem("token")
+    return sessionStorage.getItem("token")
   }//get token in localstorage
 
   getCurrentUser():Observable<any>{

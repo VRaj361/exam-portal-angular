@@ -13,7 +13,7 @@ export class AuthInterceptor implements HttpInterceptor{
   constructor(private loginService:LoginService){}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // add token localstorage request
+
     const token = this.loginService.getToken();
     let authReq = req;
     if(token != null && token != ""){
