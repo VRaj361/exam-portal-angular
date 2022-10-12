@@ -1,6 +1,8 @@
+import { NgxSpinnerService } from 'ngx-spinner';
+import { AdminService } from './../../services/admin.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -8,10 +10,23 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
   url:string=""
-  constructor(private router:Router) { }
-
+  category:any={}
+  constructor(private router:Router,private adminService : AdminService,private spinner:NgxSpinnerService) { }
   ngOnInit(): void {
+    this.spinner.show().then(()=>{
+      this.adminService.showCategory().subscribe((e)=>{
+        this.spinner.hide()
+        if (e.status == 200) {
+          this.category = e.data
+        } else {
+          Swal.fire("Error", "Somethings went wrong", "error")
+        }
+      }, () => {
+        this.spinner.hide()
+        Swal.fire("Error", "Somethings went wrong", "error")
+      })
 
+    })
   }
 
   //for side bar selections

@@ -1,3 +1,5 @@
+import { ShowInformationComponent } from './user-all-dashboard/show-information/show-information.component';
+import { ShowUserQuizzesComponent } from './user-all-dashboard/show-user-quizzes/show-user-quizzes.component';
 import { EditQuestionComponent } from './user-dashboard/edit-question/edit-question.component';
 import { AddQuestionComponent } from './user-dashboard/add-question/add-question.component';
 import { ShowQuizQuestionsComponent } from './user-dashboard/show-quiz-questions/show-quiz-questions.component';
@@ -63,7 +65,17 @@ const routes: Routes = [
           path: "myconnections",
           component:MyconnectionsComponent,
           pathMatch:"full"
-        },
+        },{
+          path: "showQuizzes",
+          component:ShowUserQuizzesComponent,
+        },{
+          path: "showQuizzes/:title",
+          component:ShowUserQuizzesComponent,
+        },{
+          path:"showInformation",
+          component:ShowInformationComponent,
+          pathMatch:"full"
+        }
 
       ],
   },{

@@ -56,6 +56,11 @@ export class AdminService {
     return this.httpClient.get(environment.url+"/quiz/particular",{headers:header})
   }
 
+  getQuizzesOfCategory(categorytitle:any):Observable<any>{
+    const header= { "categorytitle": categorytitle };
+    return this.httpClient.get(environment.url+"/quiz/category",{headers:header})
+  }
+
   //questions
   showQuestions():Observable<any>{
     return this.httpClient.get(environment.url+"/question/")

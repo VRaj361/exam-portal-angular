@@ -1,3 +1,4 @@
+import { UserAllDashboardModule } from './user-all-dashboard/user-all-dashboard.module';
 
 import { authInterceptorProvider } from './services/auth.interceptor';
 
@@ -12,7 +13,7 @@ import { UserAuthModule } from './user-auth/user-auth.module';
 import { CssJsFilesComponent } from './css-js-files/css-js-files.component';
 import { PageNotFountComponent } from './page-not-fount/page-not-fount.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -39,7 +40,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     HttpClientModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    UserAllDashboardModule
 
 
 

@@ -69,6 +69,27 @@
       </ul>
 
     </li>
+    <li class="menu-item active open" *ngIf="!checkUserAdmin()">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+        <div data-i18n="Layouts">Show Categories</div>
+      </a>
+      <ul class="menu-sub" >
+        <li class="menu-item ">
+          <a routerLink="showQuizzes" class="menu-link">
+            <div data-i18n="Account">All Quizzes</div>
+          </a>
+        </li>
+
+        <li class="menu-item " *ngFor="let cat of category">
+          <a  routerLink="showQuizzes/{{cat.title}}" class="menu-link">
+            <div data-i18n="Connections">{{cat.title}}</div>
+          </a>
+        </li>
+
+      </ul>
+
+    </li>
 
     <!-- Layouts -->
   </ul>
