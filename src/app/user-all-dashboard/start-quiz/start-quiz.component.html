@@ -1,0 +1,88 @@
+<div *ngIf="isSubmitted===false">
+  <div class="divider">
+    <button class="btn btn-primary m-2 border-purple color-white text-center" (click)="exitScreen()">Submit the
+      Quiz</button>
+  </div>
+  <div class="card container" *ngFor="let q of questions; let i=index" style="margin-top:2% ;">
+    <div class="card-body row" style="height: 1%;">
+      <b>Question {{i+1}} :</b>
+      <p class="card-header col-8 text-simple"> <span [innerHTML]="q.content"></span></p>
+
+
+    </div>
+    <div class="card-body m-2">
+
+
+      <div class="row container">
+
+        <input type="radio" class="form-check-input input-color col-md-1" [(ngModel)]="q.giveAnswer" [value]="q.option1"
+          name="{{q.questionid}}" />
+
+        <p class="col-md-5 ">A) {{q.option1}}</p>
+        <input class="form-check-input input-color col-md-1" [(ngModel)]="q.giveAnswer" [value]="q.option2"
+          name="{{q.questionid}}" type="radio" />
+
+        <p class="col-md-5">B) {{q.option2}}</p>
+      </div>
+      <div class="row container">
+        <input class="form-check-input input-color col-md-1" [(ngModel)]="q.giveAnswer" [value]="q.option3"
+          name="{{q.questionid}}" type="radio" />
+
+        <p class="col-md-5">C) {{q.option3}}</p>
+        <input class="form-check-input input-color col-md-1" [(ngModel)]="q.giveAnswer" [value]="q.option4"
+          name="{{q.questionid}}" type="radio" />
+
+        <p class="col-md-5">D) {{q.option4}}</p>
+      </div>
+
+      <hr>
+
+
+    </div>
+  </div>
+  <div class="divider">
+    <button class="btn btn-primary m-2 border-purple color-white text-center" (click)="exitScreen()">Submit the
+      Quiz</button>
+  </div>
+</div>
+<div *ngIf="isSubmitted" class="container " style="width: 50%; margin-top: 10%;">
+  <h2 class="text-center">Result Declared</h2>
+  <div class="row ">
+
+    <div class="col-md-6 col-xl-6">
+      <div class="card bg-success text-white mb-3">
+        <div class="card-header">Total Attempted</div>
+        <div class="card-body">
+          <h5 class="card-title text-white">{{this.attemptQuestions}}</h5>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-xl-6">
+      <div class="card bg-danger text-white mb-3">
+        <div class="card-header">Wrong-Not Attempted</div>
+        <div class="card-body">
+          <h5 class="card-title text-white">{{this.questions[0].quiz.numberOfQuestions - this.attemptQuestions}}</h5>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-xl-12">
+      <div class="card bg-primary text-white mb-3">
+        <div class="card-header">Overview</div>
+        <div class="card-body">
+          <p class="card-title text-white">Correct Answers : {{this.correctAnswers}}</p>
+          <h5 class="card-title text-white">Total Marks : {{this.totalMarks}}</h5>
+          <h5 class="card-title text-white">Percentage : {{this.percentage}}</h5>
+          <h4  class="card-title text-white">{{this.percentage>35?"Pass":"Fail"}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="divider">
+    <a class="btn btn-primary m-2 border-purple color-white text-center" routerLink="/user">Go Home</a>
+  </div>
+</div>

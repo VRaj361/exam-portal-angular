@@ -1,3 +1,4 @@
+import { StartQuizComponent } from './user-all-dashboard/start-quiz/start-quiz.component';
 import { ShowInformationComponent } from './user-all-dashboard/show-information/show-information.component';
 import { ShowUserQuizzesComponent } from './user-all-dashboard/show-user-quizzes/show-user-quizzes.component';
 import { EditQuestionComponent } from './user-dashboard/edit-question/edit-question.component';
@@ -140,6 +141,10 @@ const routes: Routes = [
       }
 
     ],
+  },{
+    path:"startExam",
+    component:StartQuizComponent,
+    pathMatch:"full"
   },
 
 

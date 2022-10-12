@@ -88,6 +88,11 @@ export class AdminService {
     const header= { "quizid": quizid };
     return this.httpClient.get(environment.url+"/question/quiz",{headers:header})
   }
+
+  getSomeQuestionsOfQuiz(quizid:any):Observable<any>{
+    const header= { "quizid": quizid };
+    return this.httpClient.get(environment.url+"/question/quizselect",{headers:header})
+  }
 }
 
 

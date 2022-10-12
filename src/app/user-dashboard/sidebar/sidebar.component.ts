@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class SidebarComponent implements OnInit {
   url:string=""
-  category:any={}
+  category:Array<any>=[]
   constructor(private router:Router,private adminService : AdminService,private spinner:NgxSpinnerService) { }
   ngOnInit(): void {
     this.spinner.show().then(()=>{

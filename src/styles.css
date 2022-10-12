@@ -10137,10 +10137,11 @@ textarea.form-control-lg {
 }
 .form-check .form-check-input {
   float: left;
-  margin-left: -1.7em;
+
 }
 
 .form-check-input {
+  display: inline;
   width: 1.2em;
   height: 1.2em;
   margin-top: 0.165em;
@@ -10160,7 +10161,7 @@ textarea.form-control-lg {
   border-radius: 0.25em;
 }
 .form-check-input[type=radio] {
-  border-radius: 50%;
+  border-radius: 80%;
 }
 .form-check-input:active {
   filter: brightness(90%);
