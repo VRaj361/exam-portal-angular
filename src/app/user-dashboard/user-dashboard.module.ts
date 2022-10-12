@@ -22,7 +22,7 @@ import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
 import { ShowQuizQuestionsComponent } from './show-quiz-questions/show-quiz-questions.component';
 import { AddQuestionComponent } from './add-question/add-question.component';
 import { EditQuestionComponent } from './edit-question/edit-question.component';
-
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 @NgModule({
@@ -50,7 +50,8 @@ import { EditQuestionComponent } from './edit-question/edit-question.component';
     RouterModule,
     NgxSpinnerModule,
     FormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    CKEditorModule
 
 
 

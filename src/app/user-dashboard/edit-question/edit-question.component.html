@@ -11,14 +11,16 @@
           <label class="form-label" for="basic-icon-default-company">Question</label>
           <div class="input-group input-group-merge">
 
-            <textarea
-              id="basic-icon-default-message"
+            
+            <ckeditor
+              [editor]="Editor"
+              data="<p>Question!</p>"
               class="form-control"
-              placeholder="Question"
-              rows="3"
               name="question"
               [(ngModel)]="question.content"
-            ></textarea>
+
+
+            ></ckeditor>
           </div>
         </div>
         <div class="mb-3">
