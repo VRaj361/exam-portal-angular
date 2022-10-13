@@ -37,9 +37,7 @@ export class StartQuizComponent implements OnInit {
         if (e.status == 200) {
           this.questions = e.data
           this.timer = this.questions.length * 60;
-          this.questions.forEach((d) => {
-            d.giveAnswer = ""
-          })
+
           if (this.ele.requestFullscreen) {
             this.ele.requestFullscreen()
             this.isCheck = true;
@@ -55,38 +53,17 @@ export class StartQuizComponent implements OnInit {
       })
 
     })
-    //full screeen
 
-    //reload
-
-
-    //for click of some button
-    if(this.router.url.includes("/startExam") && this.isSubmitted ==false){
-      let misuse = setInterval(() => {
-
-        if (window.innerWidth == screen.width && window.outerHeight == screen.height) {
-
-        } else {
-          this.evaluate()
-          Swal.fire("Error", "Misbehave found.. Exam Submitted", "error")
-          clearInterval(misuse)
-          return;
-        }
-      }, 1000)
-      if (this.isCheck && performance.navigation.TYPE_RELOAD == performance.navigation.type) {
-        this.evaluate()
-        Swal.fire("Error", "Misbehave found.. Exam Submitted", "error")
-        return;
-      }
-      this.changeEvent()
+    if (this.isSubmitted == false) {
+      this.disabledItems()
     }
   }
 
 
-  changeEvent(){
+  disabledItems() {
     document.addEventListener(
       'keydown',
-      (e:any) => {
+      (e: any) => {
         if (e.keyCode === 123 || e.keyCode === 18 || e.keyCode === 17) {
           this.isSubmitted = true
           this.evaluate()
@@ -95,30 +72,44 @@ export class StartQuizComponent implements OnInit {
       true
     );
 
-    document.addEventListener("visibilitychange",()=>{
+    document.addEventListener("visibilitychange", () => {
       this.isSubmitted = true
       this.evaluate()
     })
 
+    let misuse = setInterval(() => {
 
+      if (window.innerWidth == screen.width && window.outerHeight == screen.height) {
+
+      } else {
+        this.toaster.error("Misbehave found.. Exam Submitted")
+        this.evaluate()
+        clearInterval(misuse)
+        return;
+      }
+    }, 1000)
+    if (this.isCheck && performance.navigation.TYPE_RELOAD == performance.navigation.type) {
+      this.toaster.error("Misbehave found.. Exam Submitted")
+      this.evaluate()
+      return;
+    }
 
 
   }
-
+  //back button disabled
   preventBack() {
 
     history.pushState(null, "", location.href);
     this.locationSta.onPopState(() => {
       history.pushState(null, '', location.href);
-      Swal.fire("Success", "Exam submit Successfully", "success")
       this.evaluate()
       this.isSubmitted = true
-      //redirct on result side
+
     })
   }
 
 
-
+  //exit screen
   exitScreen() {
     Swal.fire({
       title: "Do you want to Submit this Quiz?.",
@@ -135,11 +126,12 @@ export class StartQuizComponent implements OnInit {
 
   }
 
+  //timer start
   startTimer() {
     let timer = window.setInterval(() => {
       if (this.timer <= 0) {
-        //submit without ask
-        Swal.fire("Success", "Times Up..", "success")
+        this.toaster.success("Times Up..")
+        this.isSubmitted = true
         this.evaluate()
         clearInterval(timer)
       } else {
@@ -148,7 +140,7 @@ export class StartQuizComponent implements OnInit {
     }, 1000)
   }
 
-
+  //get time
   getPerfectTime() {
     let hour = Math.floor(this.timer / 3600)
     if (hour > 0) {
@@ -164,26 +156,28 @@ export class StartQuizComponent implements OnInit {
   }
 
   evaluate() {
-    this.questions.forEach((e) => {
-      if (e.giveAnswer === e.answer) {
-        this.correctAnswers++;
-        this.attemptQuestions++;
-      } else if (e.giveAnswer != e.answer && e.giveAnswer != "") {
-        this.attemptQuestions++;
-      }
+
+    this.spinner.show().then(() => {
+      this.adminService.evaluateResult(this.questions).subscribe((e) => {
+        this.spinner.hide()
+        if (e.status == 200) {
+          this.correctAnswers = e.data.correctAnswers;
+          this.attemptQuestions = e.data.attemptQuestions
+          this.totalMarks = e.data.totalMarks;
+          this.percentage = e.data.percentage;
+          if (document.exitFullscreen) {
+            this.isSubmitted = true
+            document.exitFullscreen()
+            Swal.fire("Success", e.msg, "success")
+          }
+        } else {
+          Swal.fire("Error", "Something went wrong", "error")
+        }
+      }, error => {
+        this.spinner.hide()
+        Swal.fire("Error", "Something went wrong", "error")
+      })
     })
-
-
-
-    if (document.exitFullscreen) {
-      this.isSubmitted = true
-      document.exitFullscreen()
-      this.totalMarks = this.correctAnswers * this.questions[0].quiz.maxMarks / this.questions[0].quiz.numberOfQuestions
-      this.percentage = this.totalMarks * 100 / this.questions[0].quiz.maxMarks
-      Swal.fire("Success", "Exam submit Successfully", "success")
-    }
-
-
 
   }
 

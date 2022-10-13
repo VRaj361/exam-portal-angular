@@ -93,6 +93,10 @@ export class AdminService {
     const header= { "quizid": quizid };
     return this.httpClient.get(environment.url+"/question/quizselect",{headers:header})
   }
+
+  evaluateResult(questions:any):Observable<any>{
+    return this.httpClient.post(environment.url+"/question/evaluate",questions)
+  }
 }
 
 
