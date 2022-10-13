@@ -165,11 +165,11 @@ export class StartQuizComponent implements OnInit {
           this.attemptQuestions = e.data.attemptQuestions
           this.totalMarks = e.data.totalMarks;
           this.percentage = e.data.percentage;
-          if (document.exitFullscreen) {
+          // if (document.exitFullscreen) {
             this.isSubmitted = true
-            document.exitFullscreen()
+            // document.exitFullscreen()
             Swal.fire("Success", e.msg, "success")
-          }
+          // }
         } else {
           Swal.fire("Error", "Something went wrong", "error")
         }
