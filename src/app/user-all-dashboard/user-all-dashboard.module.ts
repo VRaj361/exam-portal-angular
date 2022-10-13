@@ -7,8 +7,9 @@ import { ShowUserQuizzesComponent } from './show-user-quizzes/show-user-quizzes.
 import { ShowInformationComponent } from './show-information/show-information.component';
 import { Router, RouterModule } from '@angular/router';
 import { StartQuizComponent } from './start-quiz/start-quiz.component';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
 @NgModule({
   declarations: [
     ShowUserQuizzesComponent,
@@ -19,8 +20,11 @@ import { StartQuizComponent } from './start-quiz/start-quiz.component';
     CommonModule,
     RouterModule,
 
-    
+
     FormsModule,
+    MatProgressSpinnerModule,
+    BrowserAnimationsModule,
+    MatCardModule
 
   ],
   exports:[

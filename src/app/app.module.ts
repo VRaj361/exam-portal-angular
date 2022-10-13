@@ -21,6 +21,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     HttpClientModule,
     NgxSpinnerModule,
     UserAllDashboardModule,
-  
+    MatProgressSpinnerModule,
+    BrowserAnimationsModule
 
 
 
