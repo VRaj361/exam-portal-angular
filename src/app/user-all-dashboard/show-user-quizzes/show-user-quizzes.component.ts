@@ -14,7 +14,7 @@ export class ShowUserQuizzesComponent implements OnInit {
   constructor(private adminService: AdminService, private spinner: NgxSpinnerService, private toaster: ToastrService, private router: Router, private activeRoute: ActivatedRoute) { }
   quizzes: Array<any> = []
   ngOnInit(): void {
-   
+
     this.activeRoute.params.subscribe(() => {
 
 
@@ -43,7 +43,7 @@ export class ShowUserQuizzesComponent implements OnInit {
             if (e.status == 200) {
               this.quizzes = e.data
               this.quizzes = this.quizzes.filter((data) => data.active != false)
-              console.log(this.quizzes)
+              
             } else {
               Swal.fire("Error", "Somethings went wrong", "error")
             }

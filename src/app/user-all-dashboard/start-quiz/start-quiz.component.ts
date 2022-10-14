@@ -1,3 +1,4 @@
+import { LoginService } from './../../services/login.service';
 
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -15,7 +16,7 @@ import { LocationStrategy } from '@angular/common';
 })
 export class StartQuizComponent implements OnInit {
 
-  constructor(private router: Router, private locationSta: LocationStrategy, private adminService: AdminService, private spinner: NgxSpinnerService, private toaster: ToastrService) {
+  constructor(private router: Router, private locationSta: LocationStrategy, private adminService: AdminService, private spinner: NgxSpinnerService, private toaster: ToastrService, private loginService: LoginService) {
 
   }
   ele = document.documentElement
@@ -155,20 +156,71 @@ export class StartQuizComponent implements OnInit {
 
   }
 
+  attempt: any = {
+    "user": {
+      "userid": ""
+    },
+    "quiz": {
+      "quizid": ""
+    },
+    "content": "{json}",
+    "attemptQuestions": 0,
+    "correctAnswers": 0,
+    "totalMarks": 0,
+    "percentage": 0
+
+  }
+
   evaluate() {
 
     this.spinner.show().then(() => {
       this.adminService.evaluateResult(this.questions).subscribe((e) => {
         this.spinner.hide()
         if (e.status == 200) {
-          this.correctAnswers = e.data.correctAnswers;
-          this.attemptQuestions = e.data.attemptQuestions
-          this.totalMarks = e.data.totalMarks;
-          this.percentage = e.data.percentage;
+          // this.correctAnswers = e.data.correctAnswers;
+          // this.attemptQuestions = e.data.attemptQuestions
+          // this.totalMarks = e.data.totalMarks;
+          // this.percentage = e.data.percentage;
+
+
+          //attempt ready
+          this.spinner.show().then(() => {
+            this.loginService.getCurrentUser().subscribe((data) => {
+              this.spinner.hide()
+
+              this.attempt.content = JSON.stringify( this.questions)
+              this.attempt.attemptQuestions = e.data.attemptQuestions
+              this.attempt.correctAnswers = e.data.correctAnswers;
+              this.attempt.totalMarks = e.data.totalMarks
+              this.attempt.percentage = e.data.percentage
+              this.attempt.quiz.quizid = sessionStorage.getItem("quizid")
+              this.attempt.user.userid = data.userid
+
+
+              this.spinner.show().then(() => {
+                this.adminService.addAttempt(this.attempt).subscribe((e) => {
+                  this.spinner.hide();
+                  if (e.status == 200) {
+                    this.correctAnswers = e.data.correctAnswers;
+                    this.attemptQuestions = e.data.attemptQuestions
+                    this.totalMarks = e.data.totalMarks;
+                    this.percentage = e.data.percentage;
+                  } else {
+                    Swal.fire("Error", "Somethings went wrong", "error")
+                  }
+                })
+              })
+            }, error => {
+              this.spinner.hide()
+              Swal.fire("Error", "Somethings went wrong", "error")
+            })
+          })
+
+
           // if (document.exitFullscreen) {
-            this.isSubmitted = true
-            // document.exitFullscreen()
-            Swal.fire("Success", e.msg, "success")
+          this.isSubmitted = true
+          // document.exitFullscreen()
+          Swal.fire("Success", e.msg, "success")
           // }
         } else {
           Swal.fire("Error", "Something went wrong", "error")

@@ -86,9 +86,9 @@
 
     <div class="col-md-6 col-xl-6">
       <div class="card bg-success text-white mb-3">
-        <div class="card-header">Total Attempted</div>
+        <div class="card-header">Correct Attempted</div>
         <div class="card-body">
-          <h5 class="card-title text-white">{{this.attemptQuestions}}</h5>
+          <h5 class="card-title text-white">{{this.correctAnswers}}</h5>
 
         </div>
       </div>
@@ -97,7 +97,7 @@
       <div class="card bg-danger text-white mb-3">
         <div class="card-header">Wrong-Not Attempted</div>
         <div class="card-body">
-          <h5 class="card-title text-white">{{this.questions[0].quiz.numberOfQuestions - this.attemptQuestions}}</h5>
+          <h5 class="card-title text-white">{{this.questions[0].quiz.numberOfQuestions - this.correctAnswers}}</h5>
 
         </div>
       </div>
@@ -109,7 +109,7 @@
       <div class="card bg-primary text-white mb-3">
         <div class="card-header">Overview</div>
         <div class="card-body">
-          <p class="card-title text-white">Correct Answers : {{this.correctAnswers}}</p>
+          <!-- <p class="card-title text-white">Correct Answers : {{this.correctAnswers}}</p> -->
           <h5 class="card-title text-white">Total Marks : {{this.totalMarks}}</h5>
           <h5 class="card-title text-white">Percentage : {{this.percentage}}</h5>
           <h4  class="card-title text-white">Status : {{this.percentage>35?"Pass":"Fail"}}</h4>

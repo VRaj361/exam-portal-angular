@@ -1,3 +1,4 @@
+import { LoginService } from './../../services/login.service';
 import { AdminService } from './../../services/admin.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class ShowInformationComponent implements OnInit {
 
-  constructor(private spinner: NgxSpinnerService, private router: Router, private toater: ToastrService, private adminService: AdminService) { }
+  constructor(private spinner: NgxSpinnerService, private router: Router, private toater: ToastrService, private adminService: AdminService,private loginService:LoginService) { }
   quiz: any = {}
   ngOnInit(): void {
     let id = sessionStorage.getItem("quizid")
@@ -37,19 +38,56 @@ export class ShowInformationComponent implements OnInit {
       this.router.navigateByUrl("/user/showQuizzes")
     }
   }
-
+  attempt:any={
+    "quiz":{
+      "quizid":""
+    },
+    "user":{
+      "userid":""
+    }
+  }
   startExam(){
-    Swal.fire({
-      icon:'info',
-      title:'Please Read Instruction very Carefully!',
-      confirmButtonText:"Start Exam",
-      confirmButtonColor:"#03c3ec",
-      showCancelButton:true
-    }).then((result)=>{
-      if(result.isConfirmed){
-        this.router.navigateByUrl("startExam")
-      }
+    this.spinner.show().then(() => {
+      this.loginService.getCurrentUser().subscribe((data) => {
+
+        this.attempt.quiz.quizid = sessionStorage.getItem("quizid")
+        this.attempt.user.userid = data.userid
+
+        this.adminService.checkDuplication(this.attempt).subscribe((e)=>{
+          this.spinner.hide()
+          if(e.status==200){
+            Swal.fire({
+              icon:'info',
+              title:'Please Read Instruction very Carefully!',
+              confirmButtonText:"Start Exam",
+              confirmButtonColor:"#03c3ec",
+              showCancelButton:true
+            }).then((result)=>{
+              if(result.isConfirmed){
+                this.router.navigateByUrl("startExam")
+              }
+            })
+          }else{
+            this.spinner.hide()
+            Swal.fire("Error",e.msg,"error")
+            this.router.navigateByUrl("/user")
+          }
+        },error=>{
+          this.spinner.hide()
+          Swal.fire("Error","Something went wrong","error")
+          this.router.navigateByUrl("/user")
+        })
+
+      },error=>{
+        this.spinner.hide()
+        Swal.fire("Error","Something went wrong","error")
+        this.router.navigateByUrl("/user")
+      })
     })
+
+
+
+
   }
 
 }

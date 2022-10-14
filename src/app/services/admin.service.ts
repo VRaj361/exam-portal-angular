@@ -97,6 +97,16 @@ export class AdminService {
   evaluateResult(questions:any):Observable<any>{
     return this.httpClient.post(environment.url+"/question/evaluate",questions)
   }
+
+
+  //attempt
+  addAttempt(attempt:any):Observable<any>{
+    return this.httpClient.post(environment.url+"/attempt/",attempt)
+  }
+
+  checkDuplication(attempt:any):Observable<any>{
+    return this.httpClient.post(environment.url+"/attempt/checkDuplicate",attempt)
+  }
 }
 
 
