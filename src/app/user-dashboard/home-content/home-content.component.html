@@ -57,7 +57,7 @@
                     </div>
 
                   </div>
-                  <span  class="fw-semibold d-block mb-1">Attempts</span>
+                  <span class="fw-semibold d-block mb-1">Attempts</span>
                   <h3 class="card-title text-nowrap mb-1">{{this.attempts.length}}</h3>
 
                 </div>
@@ -68,6 +68,39 @@
         <!-- Total Revenue -->
         <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
           <!-- create table -->
+          <!-- Borderless Table -->
+
+            <div class="card " style=" margin-top: 2%"  *ngIf="this.attempts.length>0">
+              <h5 class="card-header">Attempted Quizzes</h5>
+              <div class="table-responsive text-nowrap">
+                <table class="table table-borderless">
+                  <thead>
+                    <tr>
+                      <th>Title of Quiz</th>
+                      <th>Your Marks</th>
+                      <th>Total Marks</th>
+                      <th>Pass/Fail</th>
+                      <th>Show Details</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <tr *ngFor="let atte of attempts">
+                      <!-- <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{u.title}}</strong></td> -->
+                      <!-- <td>{{att/description}}</td> -->
+                      <td>{{atte.quiz.title}}</td>
+                      <td >{{atte.totalMarks}}</td>
+                      <td >{{atte.quiz.maxMarks}}</td>
+                      <td class="{{atte.percentage>=35?'text-success':'text-danger'}}"><b>{{atte.percentage>=35?"Pass":"Fail"}}</b></td>
+                      <td><button class="btn btn-primary color-white" (click)="showDetails(atte.attemptid)">Show Details</button></td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
 
         </div>
         <!--/ Total Revenue -->
@@ -83,7 +116,7 @@
 
 
                   </div>
-                  <span  class="fw-semibold d-block mb-1">Fail</span>
+                  <span class="fw-semibold d-block mb-1">Fail</span>
                   <h3 class="card-title text-nowrap mb-2">{{this.fail}}</h3>
                 </div>
               </div>

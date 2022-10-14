@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import  Swal  from 'sweetalert2';
 import { LoginService } from './../../services/login.service';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -12,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeContentComponent implements OnInit {
 
-  constructor(private adminService:AdminService,private spinner:NgxSpinnerService,private loginService:LoginService) { }
+  constructor(private adminService:AdminService,private spinner:NgxSpinnerService,private loginService:LoginService,private router:Router) { }
   attempts:Array<any>=[]
   mess:any=""
   user:any={}
@@ -51,5 +52,10 @@ export class HomeContentComponent implements OnInit {
 
   }
 
+
+  showDetails(id:any){
+    sessionStorage.setItem("attemptid",id);
+    this.router.navigateByUrl("/user/showDetails")
+  }
 
 }

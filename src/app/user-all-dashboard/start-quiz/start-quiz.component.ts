@@ -205,6 +205,7 @@ export class StartQuizComponent implements OnInit {
                     this.attemptQuestions = e.data.attemptQuestions
                     this.totalMarks = e.data.totalMarks;
                     this.percentage = e.data.percentage;
+                    sessionStorage.removeItem("quizid")
                   } else {
                     Swal.fire("Error", "Somethings went wrong", "error")
                   }

@@ -112,6 +112,11 @@ export class AdminService {
     const header= { "userid": id };
     return this.httpClient.get(environment.url+"/attempt/currentUserAttempts",{headers:header})
   }
+
+  currentQuizDetails(id:any):Observable<any>{
+    const header = {"attemptid":id};
+    return this.httpClient.get(environment.url+"/attempt/currentQuizDetails",{headers:header})
+  }
 }
 
 

@@ -1,3 +1,4 @@
+import { ShowDetailsComponent } from './user-dashboard/show-details/show-details.component';
 import { StartQuizComponent } from './user-all-dashboard/start-quiz/start-quiz.component';
 import { ShowInformationComponent } from './user-all-dashboard/show-information/show-information.component';
 import { ShowUserQuizzesComponent } from './user-all-dashboard/show-user-quizzes/show-user-quizzes.component';
@@ -75,6 +76,10 @@ const routes: Routes = [
         },{
           path:"showInformation",
           component:ShowInformationComponent,
+          pathMatch:"full"
+        },{
+          path:"showDetails",
+          component:ShowDetailsComponent,
           pathMatch:"full"
         }
 

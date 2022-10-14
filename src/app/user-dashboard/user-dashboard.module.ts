@@ -23,6 +23,7 @@ import { ShowQuizQuestionsComponent } from './show-quiz-questions/show-quiz-ques
 import { AddQuestionComponent } from './add-question/add-question.component';
 import { EditQuestionComponent } from './edit-question/edit-question.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { ShowDetailsComponent } from './show-details/show-details.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     EditQuizComponent,
     ShowQuizQuestionsComponent,
     AddQuestionComponent,
-    EditQuestionComponent
+    EditQuestionComponent,
+    ShowDetailsComponent
   ],
   imports: [
     BrowserModule,
