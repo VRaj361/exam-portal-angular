@@ -18,7 +18,7 @@ export class ShowInformationComponent implements OnInit {
     let id = sessionStorage.getItem("quizid")
 
     if (id != null || id != "") {
-
+      
 
       this.adminService.getQuiz(id).subscribe((e) => {
         this.spinner.hide()

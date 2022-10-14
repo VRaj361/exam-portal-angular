@@ -118,6 +118,10 @@ export class AdminService {
     return this.httpClient.get(environment.url+"/attempt/currentQuizDetails",{headers:header})
   }
 
+  getAllAttempt():Observable<any>{
+    return this.httpClient.get(environment.url+"/attempt/")
+  }
+
   getAllUserDetails(id:any):Observable<any>{
     const header = {"quizid":id}
     return this.httpClient.get(environment.url+"/attempt/getAllUserDetails",{headers:header})

@@ -25,6 +25,7 @@ import { EditQuestionComponent } from './edit-question/edit-question.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ShowDetailsComponent } from './show-details/show-details.component';
 import { ShowAllUserDetailsComponent } from './show-all-user-details/show-all-user-details.component';
+import { ShowAllUserComponent } from './show-all-user/show-all-user.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { ShowAllUserDetailsComponent } from './show-all-user-details/show-all-us
     AddQuestionComponent,
     EditQuestionComponent,
     ShowDetailsComponent,
-    ShowAllUserDetailsComponent
+    ShowAllUserDetailsComponent,
+    ShowAllUserComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +76,8 @@ import { ShowAllUserDetailsComponent } from './show-all-user-details/show-all-us
     ShowQuizQuestionsComponent,
     AddQuestionComponent,
     EditQuestionComponent,
-    HomeContentComponent
+    HomeContentComponent,
+    ShowAllUserComponent,
 
   ]
 })

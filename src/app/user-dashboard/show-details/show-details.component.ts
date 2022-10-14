@@ -20,7 +20,11 @@ export class ShowDetailsComponent implements OnInit {
     sessionStorage.removeItem("attemptid")
     if(id==null){
       this.toaster.error("Something went wrong")
-      this.router.navigateByUrl("/user")
+      if(this.router.url.includes("/user")){
+        this.router.navigateByUrl("/user")
+      }else{
+        this.router.navigateByUrl("/admin")
+      }
     }else{
       this.spinner.show().then(()=>{
         this.adminService.currentQuizDetails(id).subscribe((e)=>{
@@ -32,15 +36,31 @@ export class ShowDetailsComponent implements OnInit {
 
           }else{
             Swal.fire("Error","Something went wrong","error")
-            this.router.navigateByUrl("/user")
+            if(this.router.url.includes("/user")){
+              this.router.navigateByUrl("/user")
+            }else{
+              this.router.navigateByUrl("/admin")
+            }
+
           }
         },()=>{
           this.spinner.hide()
           Swal.fire("Error","Something went wrong","error")
-          this.router.navigateByUrl("/user")
+          if(this.router.url.includes("/user")){
+            this.router.navigateByUrl("/user")
+          }else{
+            this.router.navigateByUrl("/admin")
+          }
         })
       })
     }
   }
 
+  redirectHome(){
+    if(this.router.url.includes("/user")){
+      this.router.navigateByUrl("/user")
+    }else{
+      this.router.navigateByUrl("/admin")
+    }
+  }
 }

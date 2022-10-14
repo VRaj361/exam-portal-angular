@@ -1,3 +1,4 @@
+import { ShowAllUserComponent } from './user-dashboard/show-all-user/show-all-user.component';
 import { ShowAllUserDetailsComponent } from './user-dashboard/show-all-user-details/show-all-user-details.component';
 import { ShowDetailsComponent } from './user-dashboard/show-details/show-details.component';
 import { StartQuizComponent } from './user-all-dashboard/start-quiz/start-quiz.component';
@@ -149,6 +150,14 @@ const routes: Routes = [
         path:"editQuestion",
         component:EditQuestionComponent,
         pathMatch:"full"
+      },{
+        path:"showAllUser",
+        component:ShowAllUserComponent,
+        pathMatch:"full"
+      },{
+        path:"showDetails",
+        component:ShowDetailsComponent,
+        pathMatch:'full'
       }
 
     ],

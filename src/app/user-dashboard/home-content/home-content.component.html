@@ -70,9 +70,7 @@
         </div>
         <!-- Total Revenue -->
         <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
-          <!-- create table -->
-          <!-- Borderless Table -->
-
+        
             <div class="card " style=" margin-top: 2%"  *ngIf="this.attempts.length>0">
               <h5 class="card-header">Attempted Quizzes</h5>
               <div class="table-responsive text-nowrap">
@@ -90,8 +88,7 @@
                   <tbody>
 
                     <tr *ngFor="let atte of attempts">
-                      <!-- <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{u.title}}</strong></td> -->
-                      <!-- <td>{{att/description}}</td> -->
+
                       <td>{{atte.quiz.title}}</td>
                       <td >{{atte.totalMarks}}</td>
                       <td >{{atte.quiz.maxMarks}}</td>
