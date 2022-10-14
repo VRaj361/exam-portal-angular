@@ -69,7 +69,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     EditQuizComponent,
     ShowQuizQuestionsComponent,
     AddQuestionComponent,
-    EditQuestionComponent
+    EditQuestionComponent,
+    HomeContentComponent
 
   ]
 })

@@ -107,6 +107,11 @@ export class AdminService {
   checkDuplication(attempt:any):Observable<any>{
     return this.httpClient.post(environment.url+"/attempt/checkDuplicate",attempt)
   }
+
+  currentUserAttempts(id:any):Observable<any>{
+    const header= { "userid": id };
+    return this.httpClient.get(environment.url+"/attempt/currentUserAttempts",{headers:header})
+  }
 }
 
 
