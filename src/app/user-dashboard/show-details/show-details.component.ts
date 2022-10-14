@@ -17,6 +17,7 @@ export class ShowDetailsComponent implements OnInit {
   title:any=""
   ngOnInit(): void {
     let id=sessionStorage.getItem("attemptid")
+    sessionStorage.removeItem("attemptid")
     if(id==null){
       this.toaster.error("Something went wrong")
       this.router.navigateByUrl("/user")
@@ -28,7 +29,7 @@ export class ShowDetailsComponent implements OnInit {
             this.attempt = e.data
             this.question = JSON.parse(e.data.content)
             console.log(this.question)
-            
+
           }else{
             Swal.fire("Error","Something went wrong","error")
             this.router.navigateByUrl("/user")

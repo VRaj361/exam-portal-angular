@@ -58,4 +58,9 @@ export class HomeContentComponent implements OnInit {
     this.router.navigateByUrl("/user/showDetails")
   }
 
+  showAllUser(id:any){
+    sessionStorage.setItem("quizid",id)
+    this.router.navigateByUrl("/user/getAllUserDetails")
+  }
+
 }

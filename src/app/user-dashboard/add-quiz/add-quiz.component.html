@@ -62,6 +62,24 @@
           </div>
         </div>
         <div class="mb-3">
+          <label class="form-label" for="basic-icon-default-company">Total Time</label>
+          <div class="input-group input-group-merge">
+            <span id="basic-icon-default-company2" class="input-group-text"
+              ><i class="bx bx-bookmarks"></i
+            ></span>
+            <input
+              type="number"
+              id="basic-icon-default-company"
+              class="form-control"
+              placeholder="Total Minutes"
+              aria-label="ACME Inc."
+              aria-describedby="basic-icon-default-company2"
+              name="minutes"
+              [(ngModel)]="quiz.timeOfQuiz"
+            />
+          </div>
+        </div>
+        <div class="mb-3">
           <label class="form-label" for="basic-icon-default-company">Select Category of Quiz</label>
           <div class="input-group input-group-merge">
             <span id="basic-icon-default-company2" class="input-group-text"

@@ -37,7 +37,7 @@ export class StartQuizComponent implements OnInit {
         this.spinner.hide()
         if (e.status == 200) {
           this.questions = e.data
-          this.timer = this.questions.length * 60;
+          this.timer = this.questions[0].quiz.timeOfQuiz * 60;
 
           if (this.ele.requestFullscreen) {
             this.ele.requestFullscreen()

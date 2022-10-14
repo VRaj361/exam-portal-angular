@@ -20,6 +20,7 @@ export class AddQuizComponent implements OnInit {
     "description": "",
     "maxMarks": 0,
     "numberOfQuestions": 0,
+    "timeOfQuiz":0,
     "category": {
       "categoryid": ""
     }

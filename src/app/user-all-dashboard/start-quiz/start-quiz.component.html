@@ -58,7 +58,7 @@
             mode="determinate"
             color="primary"
             style="margin: auto;"
-            [value]="(this.timer/(this.questions.length*60))*100"
+            [value]="(this.timer/(this.questions[0].quiz.timeOfQuiz*60))*100"
 
           ></mat-spinner>
         </mat-card-content>

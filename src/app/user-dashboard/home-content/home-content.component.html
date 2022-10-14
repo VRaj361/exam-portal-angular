@@ -16,6 +16,9 @@
                   <p class="mb-4">
                     Welcome {{user.firstName +" "+ user.lastName}}
                   </p>
+                  <p class="mb-4 ">
+                    Status : <span class="{{user.enabled?'text-success':'text-danger'}}">{{user.enabled?"Active":"Inactive"}}</span>
+                  </p>
 
                   <!-- <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a> -->
                 </div>
@@ -81,6 +84,7 @@
                       <th>Total Marks</th>
                       <th>Pass/Fail</th>
                       <th>Show Details</th>
+                      <th>All Users</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -93,6 +97,7 @@
                       <td >{{atte.quiz.maxMarks}}</td>
                       <td class="{{atte.percentage>=35?'text-success':'text-danger'}}"><b>{{atte.percentage>=35?"Pass":"Fail"}}</b></td>
                       <td><button class="btn btn-primary color-white" (click)="showDetails(atte.attemptid)">Show Details</button></td>
+                      <td><button class="btn btn-primary color-white" (click)="showAllUser(atte.quiz.quizid)">All Users</button></td>
 
                     </tr>
 
