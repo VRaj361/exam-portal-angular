@@ -47,4 +47,7 @@ export class LoginService {
   getAllUser():Observable<any>{
     return this.httpClient.get(environment.url+"/allUser")
   }
+
+ 
 }
+

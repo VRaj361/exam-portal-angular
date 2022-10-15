@@ -26,6 +26,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ShowDetailsComponent } from './show-details/show-details.component';
 import { ShowAllUserDetailsComponent } from './show-all-user-details/show-all-user-details.component';
 import { ShowAllUserComponent } from './show-all-user/show-all-user.component';
+import { OtpPageComponent } from './otp-page/otp-page.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import { ShowAllUserComponent } from './show-all-user/show-all-user.component';
     EditQuestionComponent,
     ShowDetailsComponent,
     ShowAllUserDetailsComponent,
-    ShowAllUserComponent
+    ShowAllUserComponent,
+    OtpPageComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -78,6 +82,8 @@ import { ShowAllUserComponent } from './show-all-user/show-all-user.component';
     EditQuestionComponent,
     HomeContentComponent,
     ShowAllUserComponent,
+    OtpPageComponent,
+    ChangePasswordComponent
 
   ]
 })

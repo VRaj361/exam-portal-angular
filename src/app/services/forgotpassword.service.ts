@@ -10,8 +10,9 @@ export class ForgotpasswordService {
 
   constructor(private httpClient:HttpClient) { }
 
-  forgotPassword(user:any,headers:any):Observable<any>{
-    return this.httpClient.post(environment.url+"/user/forgotpassword",user,{headers})
+  forgotPassword(user:any):Observable<any>{
+
+    return this.httpClient.post(environment.url+"/user/forgotpassword",user)
   }//incomplete
 
 
@@ -19,4 +20,10 @@ export class ForgotpasswordService {
   generateTokenForForgetPassword(user:any):Observable<any>{
     return this.httpClient.post(environment.url+"/generate-tokens",user)
   }//email required
+
+   //check otp
+   checkOtp(number:any,otp:any):Observable<any>{
+    const header = {"number":number,"oneTimeOtp":otp}
+    return this.httpClient.get(environment.url+"/user/validateOtp",{headers:header})
+  }
 }

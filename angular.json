@@ -34,7 +34,8 @@
               "src/assets/js/dashboards-analytics.js",
               "src/assets/js/main.js",
               "src/assets/js/menu.js",
-              "src/assets/js/bootstrap.js"
+              "src/assets/js/bootstrap.js",
+              "src/assets/js/otpEnter.js"
              ]
           },
           "configurations": {

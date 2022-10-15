@@ -127,6 +127,19 @@ export class AdminService {
     return this.httpClient.get(environment.url+"/attempt/getAllUserDetails",{headers:header})
   }
 
+
+
+  //get current user
+  getCurrentUser(id:any):Observable<any>{
+    const header = {"userid":id}
+    return this.httpClient.get(environment.url+"/getCurrentUser",{headers:header})
+  }
+
+  //change Password
+  changePassword(id:any,password:any){
+    const header = {"userid":JSON.stringify(id),"password":JSON.stringify(password)}
+    return this.httpClient.get(environment.url+"/changePassword?userid="+id+"&password="+password)
+  }
 }
 
 

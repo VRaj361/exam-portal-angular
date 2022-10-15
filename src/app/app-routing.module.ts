@@ -1,3 +1,5 @@
+import { ChangePasswordComponent } from './user-dashboard/change-password/change-password.component';
+import { OtpPageComponent } from './user-dashboard/otp-page/otp-page.component';
 import { ShowAllUserComponent } from './user-dashboard/show-all-user/show-all-user.component';
 import { ShowAllUserDetailsComponent } from './user-dashboard/show-all-user-details/show-all-user-details.component';
 import { ShowDetailsComponent } from './user-dashboard/show-details/show-details.component';
@@ -51,6 +53,19 @@ const routes: Routes = [
 		component:ForgetPasswordComponent,
 		pathMatch:"full"
   },{
+    path:"otpEnter",
+    component:OtpPageComponent,
+    pathMatch:"full"
+  },
+  {
+    path:"changePassword",
+    component:ChangePasswordComponent,
+    pathMatch:"full"
+  },
+
+
+
+  {
       path:"user",
       component:DashboardComponent,
       canActivate:[UserGuard],
