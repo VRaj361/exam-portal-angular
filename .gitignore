@@ -41,11 +41,11 @@ testem.log
 .DS_Store
 Thumbs.db
 
-/src/assets
-/src/js
-/src/libs
-/src/scss
-/src/fonts
+# /src/assets
+# /src/js
+# /src/libs
+# /src/scss
+# /src/fonts
 
 # angular.json
 # package.json
