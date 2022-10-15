@@ -65,7 +65,55 @@ export class ShowQuizzesComponent implements OnInit {
         this.spinner.hide()
         if (e.status == 200) {
           length=e.data.length
+          
+          this.spinner.show().then(() => {
+            this.adminService.getQuiz(id).subscribe((e) => {
+              this.spinner.hide()
+              if (e.status == 200) {
+                this.quiz = e.data
+                if (this.quiz.active == false) {
+                  this.quiz.active = true;
+                } else {
+                  this.quiz.active = false;
+                }
 
+                //edit request
+
+                if(length >= this.quiz.numberOfQuestions){
+                  this.spinner.show().then(() => {
+                    this.adminService.editQuiz(this.quiz).subscribe((e) => {
+                      this.spinner.hide()
+                      if (e.status == 200) {
+                        this.toaster.success(e.msg)
+                        this.ngOnInit()
+                      } else if (e.status == 404) {
+
+                        Swal.fire("Error", e.msg, "error")
+                      } else {
+
+                        Swal.fire("Error", "Somethings went wrong", "error")
+                      }
+                    }, () => {
+                      this.spinner.hide()
+                      Swal.fire("Error", "Somethings went wrong", "error")
+
+                    })
+                  })
+                }else{
+                  Swal.fire("Error", "Please Add All Question or Update Quiz", "error")
+                }
+
+                } else if (e.status == 404) {
+                  Swal.fire("Error", e.msg, "error")
+                } else {
+                  Swal.fire("Error", "Somethings went wrong", "error")
+                }
+              }, () => {
+                this.spinner.hide()
+                Swal.fire("Error", "Somethings went wrong", "error")
+              })
+
+          })
         } else {
           Swal.fire("Error", "Somethings went wrong", "error")
         }
@@ -78,54 +126,7 @@ export class ShowQuizzesComponent implements OnInit {
     })
 
 
-    this.spinner.show().then(() => {
-      this.adminService.getQuiz(id).subscribe((e) => {
-        this.spinner.hide()
-        if (e.status == 200) {
-          this.quiz = e.data
-          if (this.quiz.active == false) {
-            this.quiz.active = true;
-          } else {
-            this.quiz.active = false;
-          }
 
-          //edit request
-          
-          if(length >= this.quiz.numberOfQuestions){
-            this.spinner.show().then(() => {
-              this.adminService.editQuiz(this.quiz).subscribe((e) => {
-                this.spinner.hide()
-                if (e.status == 200) {
-                  this.toaster.success(e.msg)
-                  this.ngOnInit()
-                } else if (e.status == 404) {
-
-                  Swal.fire("Error", e.msg, "error")
-                } else {
-
-                  Swal.fire("Error", "Somethings went wrong", "error")
-                }
-              }, () => {
-                this.spinner.hide()
-                Swal.fire("Error", "Somethings went wrong", "error")
-
-              })
-            })
-          }else{
-            Swal.fire("Error", "Please Add All Question or Update Quiz", "error")
-          }
-
-          } else if (e.status == 404) {
-            Swal.fire("Error", e.msg, "error")
-          } else {
-            Swal.fire("Error", "Somethings went wrong", "error")
-          }
-        }, () => {
-          this.spinner.hide()
-          Swal.fire("Error", "Somethings went wrong", "error")
-        })
-
-    })
 
   }
 

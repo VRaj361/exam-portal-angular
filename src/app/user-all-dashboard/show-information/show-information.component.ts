@@ -18,8 +18,8 @@ export class ShowInformationComponent implements OnInit {
     let id = sessionStorage.getItem("quizid")
 
     if (id != null || id != "") {
-      
 
+    this.spinner.show().then(()=>{
       this.adminService.getQuiz(id).subscribe((e) => {
         this.spinner.hide()
         if (e.status == 200) {
@@ -33,6 +33,7 @@ export class ShowInformationComponent implements OnInit {
         this.spinner.hide()
         Swal.fire("Error", "Somethings went wrong", "error")
       })
+    })
     } else {
       Swal.fire("Error", "Somethings went wrong", "error")
       this.router.navigateByUrl("/user/showQuizzes")
