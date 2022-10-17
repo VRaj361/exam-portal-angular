@@ -237,6 +237,7 @@ export class StartQuizComponent implements OnInit {
 
   printResult() {
     window.print()
+    this.router.navigateByUrl("/user")
   }
 
 }
