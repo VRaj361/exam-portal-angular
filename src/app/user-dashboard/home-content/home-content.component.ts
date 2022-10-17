@@ -63,4 +63,9 @@ export class HomeContentComponent implements OnInit {
     this.router.navigateByUrl("/user/getAllUserDetails")
   }
 
+  logOut() {
+    this.loginService.doLogOut()
+    this.router.navigateByUrl("/login")
+  }
+
 }

@@ -5,7 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from "ngx-spinner";
-declare function initPasswordToggle():any
+import '../../../assets/js/helpers.js'
+declare function initPasswordToggle(): any;
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -30,15 +31,15 @@ export class SignupComponent implements OnInit {
 
 
   //for show and hide password
-  getShowPassword(passClasses: any, passInput: any) {
-    if (passClasses.value.includes("bx-show")) {
-      passClasses.value = "bx bx-hide"
-      passInput.type = "password"
-    } else {
-      passClasses.value = "bx bx-show"
-      passInput.type = "text"
-    }
-  }
+  // getShowPassword(passClasses: any, passInput: any) {
+  //   if (passClasses.value.includes("bx-show")) {
+  //     passClasses.value = "bx bx-hide"
+  //     passInput.type = "password"
+  //   } else {
+  //     passClasses.value = "bx bx-show"
+  //     passInput.type = "text"
+  //   }
+  // }
 
 
   //for signup

@@ -70,7 +70,7 @@
         </div>
         <!-- Total Revenue -->
         <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
-        
+
             <div class="card " style=" margin-top: 2%"  *ngIf="this.attempts.length>0">
               <h5 class="card-header">Attempted Quizzes</h5>
               <div class="table-responsive text-nowrap">
@@ -135,6 +135,54 @@
                   <span class="fw-semibold d-block mb-1">Overall Marks</span>
                   <h3 class="card-title mb-2">{{this.marks}}</h3>
 
+                </div>
+              </div>
+            </div>
+            <div class="col-12 mb-4">
+              <div class="card">
+                <div class="card h-100">
+                  <div class="card-header d-flex align-items-center justify-content-between">
+                    <h5 class="card-title m-0 me-2">Features</h5>
+
+                  </div>
+                  <div class="card-body">
+                    <ul class="p-0 m-0">
+                      <li class="d-flex mb-4 pb-1">
+                        <div class="avatar flex-shrink-0 me-3">
+                          <img src="../assets/img/icons/unicons/paypal.png" alt="User" class="rounded" />
+                        </div>
+                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                              <button type="submit" class="btn btn-primary form-control  color-white" routerLink="showQuizzes">Show Quizzes</button>
+                        </div>
+                      </li>
+                      <li class="d-flex mb-4 pb-1">
+                        <div class="avatar flex-shrink-0 me-3">
+                          <img src="../assets/img/icons/unicons/wallet.png" alt="User" class="rounded" />
+                        </div>
+                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                          <button type="submit" class="btn btn-primary form-control  color-white" routerLink="myaccount">My Account</button>
+                        </div>
+                      </li>
+                      <li class="d-flex mb-4 pb-1">
+                        <div class="avatar flex-shrink-0 me-3">
+                          <img src="../assets/img/icons/unicons/chart.png" alt="User" class="rounded" />
+                        </div>
+                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                          <button type="submit" class="btn btn-primary form-control  color-white" routerLink="myconnections">My Connections</button>
+                        </div>
+                      </li>
+                      <li class="d-flex mb-4 pb-1">
+                        <div class="avatar flex-shrink-0 me-3">
+                          <img src="../assets/img/icons/unicons/chart.png" alt="User" class="rounded" />
+                        </div>
+                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                          <button type="submit" class="btn btn-primary form-control  color-white" (click)="logOut()">Logout</button>
+                        </div>
+                      </li>
+
+
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
