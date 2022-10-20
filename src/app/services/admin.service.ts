@@ -132,6 +132,7 @@ export class AdminService {
   //get current user
   getCurrentUser(id:any):Observable<any>{
     const header = {"userid":id}
+
     return this.httpClient.get(environment.url+"/getCurrentUser",{headers:header})
   }
 
@@ -139,6 +140,12 @@ export class AdminService {
   changePassword(id:any,password:any){
     const header = {"userid":JSON.stringify(id),"password":JSON.stringify(password)}
     return this.httpClient.get(environment.url+"/changePassword?userid="+id+"&password="+password)
+  }
+
+  //delete attempt by admin
+  deleteDetail(id:any):Observable<any>{
+    // const header = {"attemptid":id};
+    return this.httpClient.delete(environment.url+"/attempt/deleteAttempt?attemptid="+id)
   }
 }
 

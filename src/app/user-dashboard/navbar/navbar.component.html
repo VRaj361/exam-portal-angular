@@ -112,7 +112,7 @@
                 <span class="align-middle">Settings</span>
               </a>
             </li>
-            <li *ngIf="checkUserAdmin()">
+            <li *ngIf="checkUserAdminhead()">
               <a class="dropdown-item" href="#">
                 <span class="d-flex align-items-center align-middle">
                   <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
@@ -121,6 +121,16 @@
                 </span>
               </a>
             </li>
+
+            <li *ngIf="checkUserAdminhead()">
+              <a class="dropdown-item" routerLink="addAdmin">
+                <span class="d-flex align-items-center align-middle">
+                  <i class="bx bx-user me-2"></i>
+                  <span class="flex-grow-1 align-middle">Add Admin</span>
+                </span>
+              </a>
+            </li>
+
             <li>
               <div class="dropdown-divider"></div>
             </li>
@@ -135,6 +145,6 @@
 
       </ul>
     </div>
-    
+
   </div>
 </div>

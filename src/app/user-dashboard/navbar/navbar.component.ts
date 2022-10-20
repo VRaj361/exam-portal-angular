@@ -50,4 +50,11 @@ export class NavbarComponent implements OnInit {
       return false;
     }
   }
+  checkUserAdminhead(){
+    if(this.router.url.includes("/admin") && this.users.username == "vraj@gmail.com"){
+      return true;
+    }else{
+      return false;
+    }
+  }
 }

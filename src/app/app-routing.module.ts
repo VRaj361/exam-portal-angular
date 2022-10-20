@@ -1,3 +1,4 @@
+import { AddAdminComponent } from './user-dashboard/add-admin/add-admin.component';
 import { ChangePasswordComponent } from './user-dashboard/change-password/change-password.component';
 import { OtpPageComponent } from './user-dashboard/otp-page/otp-page.component';
 import { ShowAllUserComponent } from './user-dashboard/show-all-user/show-all-user.component';
@@ -173,6 +174,10 @@ const routes: Routes = [
         path:"showDetails",
         component:ShowDetailsComponent,
         pathMatch:'full'
+      },{
+        path:"addAdmin",
+        component:AddAdminComponent,
+        pathMatch:"full"
       }
 
     ],

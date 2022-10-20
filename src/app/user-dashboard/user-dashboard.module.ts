@@ -28,6 +28,7 @@ import { ShowAllUserDetailsComponent } from './show-all-user-details/show-all-us
 import { ShowAllUserComponent } from './show-all-user/show-all-user.component';
 import { OtpPageComponent } from './otp-page/otp-page.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { AddAdminComponent } from './add-admin/add-admin.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     ShowAllUserDetailsComponent,
     ShowAllUserComponent,
     OtpPageComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    AddAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +85,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     HomeContentComponent,
     ShowAllUserComponent,
     OtpPageComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    ShowAllUserComponent
 
   ]
 })

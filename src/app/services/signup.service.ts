@@ -13,4 +13,8 @@ export class SignupService {
   signUpUser(user:any):Observable<any>{
     return this.httpClient.post(environment.url+"/user/signup",user)
   }
+
+  signUpNewAdmin(user:any):Observable<any>{
+    return this.httpClient.post(environment.url+"/user/signup/admin",user)
+  }
 }

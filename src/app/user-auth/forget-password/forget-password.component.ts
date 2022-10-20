@@ -30,6 +30,7 @@ export class ForgetPasswordComponent implements OnInit {
       return;
     } else {
       //api call
+      Swal.fire("Warning","You must verify number on Twilio!","warning")
       this.spinner.show().then(() => {
 
 

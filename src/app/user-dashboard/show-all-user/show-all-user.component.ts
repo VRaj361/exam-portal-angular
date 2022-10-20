@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
 import Swal from 'sweetalert2';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-show-all-user',
   templateUrl: './show-all-user.component.html',
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class ShowAllUserComponent implements OnInit {
 
-  constructor(private adminService: AdminService,private router:Router,private spinner:NgxSpinnerService) { }
+  constructor(private adminService: AdminService,private router:Router,private spinner:NgxSpinnerService,private toaster:ToastrService) { }
   attempts:Array<any>=[]
   mess:any=""
 
@@ -50,5 +51,22 @@ export class ShowAllUserComponent implements OnInit {
   showDetails(id:any){
     sessionStorage.setItem("attemptid",id);
     this.router.navigateByUrl("/admin/showDetails")
+  }
+
+  deleteDetail(id:any){
+    this.spinner.show().then(()=>{
+      this.adminService.deleteDetail(id).subscribe((e)=>{
+        this.spinner.hide()
+        if(e.status==200){
+          this.toaster.success(e.msg)
+          this.attempts = this.attempts.filter((e)=>e.attemptid != id)
+        }else{
+          this.toaster.error("Something went wrong")
+        }
+      },()=>{
+        this.spinner.hide()
+        this.toaster.error("Something went wrong")
+      })
+    })
   }
 }

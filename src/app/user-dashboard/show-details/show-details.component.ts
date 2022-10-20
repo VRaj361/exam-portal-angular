@@ -31,6 +31,7 @@ export class ShowDetailsComponent implements OnInit {
           this.spinner.hide()
           if(e.status==200){
             this.attempt = e.data
+
             this.question = JSON.parse(e.data.content)
             console.log(this.question)
 

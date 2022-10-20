@@ -22,6 +22,7 @@ export class AdminHomeContentComponent implements OnInit {
     this.spinner.show().then(() => {
       this.loginService.getAllUser().subscribe((e) => {
         this.allUser = e
+        
         this.adminService.getAllAttempt().subscribe((e) => {
 
           this.allAttempt = e
