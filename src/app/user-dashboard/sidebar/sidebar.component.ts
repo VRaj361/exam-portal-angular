@@ -1,9 +1,10 @@
+import { Observable } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AdminService } from './../../services/admin.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-declare function razorPay(obj:any):any;
+declare function razorPay(obj:any):Observable<any>;
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -52,29 +53,43 @@ export class SidebarComponent implements OnInit {
   }
 
   paymentDetails:any={}
+  response:any={}
   getOrderTransaction(){
-    this.adminService.createOrder().subscribe((e)=>{
-      if(e.status==200){
-        this.paymentDetails = JSON.parse(e.data)
+    this.spinner.show().then(()=>{
+      this.adminService.createOrder().subscribe((e)=>{
+        this.spinner.hide()
+        if(e.status==200){
+          this.paymentDetails = JSON.parse(e.data)
+          if(this.paymentDetails.status == "created"){
 
-        if(this.paymentDetails.status == "created"){
-          console.log(this.paymentDetails)
-          let paymentD = {
-            "amount":this.paymentDetails.amount,
-            "created_at":this.paymentDetails.created_at,
-            "amount_due":this.paymentDetails.amount_due,
-            "currency":this.paymentDetails.currency,
-            "orderid":this.paymentDetails.id
+            let paymentD = {
+              "amount":this.paymentDetails.amount,
+              "created_at":this.paymentDetails.created_at,
+              "amount_due":this.paymentDetails.amount_due,
+              "currency":this.paymentDetails.currency,
+              "orderid":this.paymentDetails.id
+            }
+            this.response = razorPay(paymentD)
+            console.log("res "+this.response.razorpay_payment_id)
+
+            // this.spinner.show().then(()=>{
+            //   this.adminService.changeRole(this.users.userid).subscribe(()=>{
+            //     this.spinner.hide()
+            //   },()=>{
+            //     this.spinner.hide()
+            //     Swal.fire("Error","Something went wrong","error")
+            //   })
+            // })
+          }else{
+            Swal.fire("Error","Transaction Cancelled Try again..","error")
           }
-          razorPay(paymentD)
         }else{
-          Swal.fire("Error","Transaction Cancelled Try again..","error")
+          Swal.fire("Error","Something went wrong","error")
         }
-      }else{
+      },()=>{
+        this.spinner.hide()
         Swal.fire("Error","Something went wrong","error")
-      }
-    },()=>{
-      Swal.fire("Error","Something went wrong","error")
+      })
     })
   }
 }

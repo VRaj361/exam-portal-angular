@@ -152,6 +152,11 @@ export class AdminService {
   createOrder():Observable<any>{
     return this.httpClient.get(environment.url+"/user/createOrderPayment")
   }
+
+  //change role
+  changeRole(id:any):Observable<any>{
+    return this.httpClient.get(environment.url+"/user/roleChange/"+id)
+  }
 }
 
 

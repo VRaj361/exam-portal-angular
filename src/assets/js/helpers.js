@@ -828,7 +828,7 @@ function initSidebarToggle() {
 
 
 function razorPay(obj){
-
+  let resp = undefined
   var options = {
     "key": "rzp_test_MiW841P4yRPgnT",
     "amount": JSON.stringify(obj.amount),
@@ -839,11 +839,11 @@ function razorPay(obj){
     "image": "../../../assets/img/favicon/favicon.ico",
     "order_id": obj.orderid, //This is a sample Order ID. Pass the
   "handler": function (response) {
-    console.log(response.razorpay_payment_id);
-    console.log(response.razorpay_order_id);
-    console.log(response.razorpay_signature)
-    //using this create table
-    //paid or not, userid, 
+    // console.log(response.razorpay_payment_id);
+    // console.log(response.razorpay_order_id);
+    // console.log(response.razorpay_signature)
+      resp=response
+
   },
   "notes": {
     "address": "By Vraj Patel"
@@ -858,17 +858,19 @@ function razorPay(obj){
 };
   var rzp1 = new Razorpay(options);
   rzp1.on('payment.failed', function (response) {
-    console.log(response.error.code);
-    console.log(response.error.description);
-    console.log(response.error.source);
-    console.log(response.error.step);
-    console.log(response.error.reason);
-    console.log(response.error.metadata.order_id);
-    console.log(response.error.metadata.payment_id);
+    // console.log(response.error.code);
+    // console.log(response.error.description);
+    // console.log(response.error.source);
+    // console.log(response.error.step);
+    // console.log(response.error.reason);
+    // console.log(response.error.metadata.order_id);
+    // console.log(response.error.metadata.payment_id);
+    // return response
+
   });
-
     rzp1.open();
-
+    console.log(resp)
+  return resp
 }
 // *******************************************************************************
 // * Initialization
