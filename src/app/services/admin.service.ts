@@ -147,6 +147,11 @@ export class AdminService {
     // const header = {"attemptid":id};
     return this.httpClient.delete(environment.url+"/attempt/deleteAttempt?attemptid="+id)
   }
+
+  //payment gateway call for order creation
+  createOrder():Observable<any>{
+    return this.httpClient.get(environment.url+"/user/createOrderPayment")
+  }
 }
 
 

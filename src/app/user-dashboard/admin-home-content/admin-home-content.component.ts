@@ -4,6 +4,8 @@ import { AdminService } from './../../services/admin.service';
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import Swal from 'sweetalert2';
+import '../../../assets/js/helpers.js'
+
 @Component({
   selector: 'app-admin-home-content',
   templateUrl: './admin-home-content.component.html',
@@ -17,12 +19,13 @@ export class AdminHomeContentComponent implements OnInit {
   allQuestions: any = {}
   allCategories: any = {}
   allQuizzes:Array<any> = []
+
   ngOnInit(): void {
 
     this.spinner.show().then(() => {
       this.loginService.getAllUser().subscribe((e) => {
         this.allUser = e
-        
+
         this.adminService.getAllAttempt().subscribe((e) => {
 
           this.allAttempt = e
@@ -64,5 +67,6 @@ export class AdminHomeContentComponent implements OnInit {
     sessionStorage.setItem("userid", id)
     this.router.navigateByUrl("/admin/showAllUser")
   }
+
 
 }

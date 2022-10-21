@@ -1,8 +1,10 @@
+import { AdminService } from 'src/app/services/admin.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
 import { LoginService } from './../../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+declare function razorPay(obj:any):any
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private loginService: LoginService, private router: Router, private spinner: NgxSpinnerService) { }
+  constructor(private loginService: LoginService, private router: Router, private spinner: NgxSpinnerService,private adminService:AdminService) { }
   users:any={}
   authority:any="";
   ngOnInit(): void {
@@ -56,5 +58,31 @@ export class NavbarComponent implements OnInit {
     }else{
       return false;
     }
+  }
+
+  paymentDetails:any={}
+  getOrderTransaction(){
+    this.adminService.createOrder().subscribe((e)=>{
+      if(e.status==200){
+        this.paymentDetails = JSON.parse(e.data)
+        if(this.paymentDetails.status == "created"){
+
+          let paymentD = {
+            "amount":this.paymentDetails.amount,
+            "created_at":this.paymentDetails.created_at,
+            "amount_due":this.paymentDetails.amount_due,
+            "currency":this.paymentDetails.currency,
+            "orderid":this.paymentDetails.id
+          }
+          razorPay(paymentD)
+        }else{
+          Swal.fire("Error","Transaction Cancelled Try again..","error")
+        }
+      }else{
+        Swal.fire("Error","Something went wrong","error")
+      }
+    },()=>{
+      Swal.fire("Error","Something went wrong","error")
+    })
   }
 }

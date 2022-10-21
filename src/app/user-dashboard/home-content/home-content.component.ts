@@ -69,4 +69,6 @@ export class HomeContentComponent implements OnInit {
     this.router.navigateByUrl("/login")
   }
 
+
+
 }

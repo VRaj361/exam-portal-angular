@@ -3,6 +3,7 @@ import { AdminService } from './../../services/admin.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+declare function razorPay(obj:any):any;
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -50,4 +51,30 @@ export class SidebarComponent implements OnInit {
     }
   }
 
+  paymentDetails:any={}
+  getOrderTransaction(){
+    this.adminService.createOrder().subscribe((e)=>{
+      if(e.status==200){
+        this.paymentDetails = JSON.parse(e.data)
+
+        if(this.paymentDetails.status == "created"){
+          console.log(this.paymentDetails)
+          let paymentD = {
+            "amount":this.paymentDetails.amount,
+            "created_at":this.paymentDetails.created_at,
+            "amount_due":this.paymentDetails.amount_due,
+            "currency":this.paymentDetails.currency,
+            "orderid":this.paymentDetails.id
+          }
+          razorPay(paymentD)
+        }else{
+          Swal.fire("Error","Transaction Cancelled Try again..","error")
+        }
+      }else{
+        Swal.fire("Error","Something went wrong","error")
+      }
+    },()=>{
+      Swal.fire("Error","Something went wrong","error")
+    })
+  }
 }
