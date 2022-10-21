@@ -34,7 +34,7 @@ export class OtpPageComponent implements OnInit {
           this.spinner.hide()
           if (e.status == 200) {
             Swal.fire("Success", e.msg, "success")
-            console.log(e)
+            
             sessionStorage.setItem("userid", e.data.userid)
             this.router.navigateByUrl("/changePassword")
           } else if (e.status == 400) {

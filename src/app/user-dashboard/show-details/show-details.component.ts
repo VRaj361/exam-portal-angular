@@ -33,7 +33,7 @@ export class ShowDetailsComponent implements OnInit {
             this.attempt = e.data
 
             this.question = JSON.parse(e.data.content)
-            console.log(this.question)
+            
 
           }else{
             Swal.fire("Error","Something went wrong","error")

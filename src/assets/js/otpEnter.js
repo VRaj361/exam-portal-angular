@@ -1,6 +1,6 @@
 
 function otpEnterJS(){
-  console.log("infda")
+  
   $('.digit-group').find('input').each(function() {
     $(this).attr('maxlength', 1);
     $(this).on('keyup', function(e) {

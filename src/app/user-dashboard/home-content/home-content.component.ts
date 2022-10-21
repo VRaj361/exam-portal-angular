@@ -21,6 +21,7 @@ export class HomeContentComponent implements OnInit {
   fail:any=0;
   marks:any=0;
   ngOnInit(): void {
+    sessionStorage.removeItem("quizid")
     this.spinner.show().then(()=>{
       this.loginService.getCurrentUser().subscribe((e)=>{
         this.user = e
