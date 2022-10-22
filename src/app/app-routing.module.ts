@@ -1,3 +1,4 @@
+import { PricingTableComponent } from './user-dashboard/pricing-table/pricing-table.component';
 import { AddAdminComponent } from './user-dashboard/add-admin/add-admin.component';
 import { ChangePasswordComponent } from './user-dashboard/change-password/change-password.component';
 import { OtpPageComponent } from './user-dashboard/otp-page/otp-page.component';
@@ -103,6 +104,10 @@ const routes: Routes = [
         ,{
           path:"getAllUserDetails",
           component:ShowAllUserDetailsComponent,
+          pathMatch:"full"
+        },{
+          path:"getPrices",
+          component:PricingTableComponent,
           pathMatch:"full"
         }
 
