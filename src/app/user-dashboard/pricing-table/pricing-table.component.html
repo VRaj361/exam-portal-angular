@@ -13,7 +13,7 @@
         <li class="bottom-bar">Show All User Details</li>
         <li class="bottom-bar">Delete Attempts of User</li>
 
-        <li><button class="btn active-btn" (click)="getOrderTransaction()">Buy Subscription</button></li>
+        <li><button class="btn active-btn" style="display: {{ this.is_check== false?'block':'none'}}" (click)="getOrderTransaction(buySubscription)"  #buySubscription>Buy Subscription</button></li>
         <li><button class="btn active-btn"  (click)="handleReq()">Get Confirmation</button></li>
       </ul>
     </div>

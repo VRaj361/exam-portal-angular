@@ -40,7 +40,9 @@ export class PricingTableComponent implements OnInit {
 
   paymentDetails: any = {}
   // response: any = {}
-  getOrderTransaction() {
+  is_check:any=false
+  getOrderTransaction(buySubscription:any) {
+    console.log(buySubscription)
     this.spinner.show().then(() => {
       this.adminService.createOrder().subscribe((e) => {
         this.spinner.hide()
@@ -78,6 +80,7 @@ export class PricingTableComponent implements OnInit {
             var rzp1 = new Razorpay(options);
             rzp1.on('payment.failed', this.handlerRespPayment)
             rzp1.open();
+            this.is_check=true
           } else {
             Swal.fire("Error", "Transaction Cancelled Try again..", "error")
           }
@@ -96,12 +99,12 @@ export class PricingTableComponent implements OnInit {
     sessionStorage.setItem("res",JSON.stringify(res))
     Swal.fire("Information","Please Click on button to get Confirmation","info")
   }
-
+  ress:any=null
   handleReq() {
-    let ress:any = sessionStorage.getItem("res")
-    ress = JSON.parse(ress);
+     this.ress = sessionStorage.getItem("res")
+    this.ress = JSON.parse(this.ress);
 
-    if (ress !=null) {
+    if (this.ress !=null) {
       sessionStorage.removeItem("res")
       this.spinner.show().then(() => {
         this.adminService.changeRole(this.users.userid).subscribe(() => {

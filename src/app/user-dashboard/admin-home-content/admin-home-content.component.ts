@@ -14,12 +14,12 @@ import '../../../assets/js/helpers.js'
 export class AdminHomeContentComponent implements OnInit {
 
   constructor(private adminService: AdminService, private loginService: LoginService, private spinner: NgxSpinnerService, private router: Router) { }
-  allUser: any = {}
+  allUser: Array<any> = []
   allAttempt: any = {}
   allQuestions: any = {}
   allCategories: any = {}
-  allQuizzes:Array<any> = []
-
+  allQuizzes: Array<any> = []
+  user: any = {}
   ngOnInit(): void {
 
     this.spinner.show().then(() => {
@@ -33,12 +33,24 @@ export class AdminHomeContentComponent implements OnInit {
             this.spinner.hide()
             if (e.status == 200) {
               this.allQuizzes = e.data
-              this.adminService.showCategory().subscribe(e=>{
-                if(e.status==200){
+              this.adminService.showCategory().subscribe(e => {
+                if (e.status == 200) {
                   this.allCategories = e.data
-                  this.adminService.showQuestions().subscribe(e=>{
-                    if(e.status==200){
+                  this.adminService.showQuestions().subscribe(e => {
+                    if (e.status == 200) {
                       this.allQuestions = e.data
+
+                      this.loginService.getCurrentUser().subscribe((data) => {
+
+                        this.user = data;
+
+                      }, error => {
+                        this.spinner.hide()
+                        Swal.fire("Error", "Something went wrong", "error")
+                        this.router.navigateByUrl("/")
+                      })
+
+
                     }
                   })
                 }
@@ -68,5 +80,15 @@ export class AdminHomeContentComponent implements OnInit {
     this.router.navigateByUrl("/admin/showAllUser")
   }
 
+  changeToUser(id: any) {
+    if (this.user.username == 'vraj@gmail.com' && id!=this.user.userid) {
+      this.spinner.show().then(() => {
+        this.adminService.changeAdminUser(id).subscribe();
+          this.spinner.hide()
+          Swal.fire("Success", "Update Admin to User", "success")
+          this.ngOnInit()
 
+      })
+    }
+  }
 }

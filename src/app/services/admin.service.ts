@@ -157,6 +157,11 @@ export class AdminService {
   changeRole(id:any):Observable<any>{
     return this.httpClient.get(environment.url+"/user/roleChange/?userid="+id)
   }
+
+  //admin change to user
+  changeAdminUser(id:any):Observable<any>{
+    return this.httpClient.get(environment.url+"/user/roleChangeUser/?userid="+id)
+  }
 }
 
 
