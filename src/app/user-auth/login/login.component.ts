@@ -72,6 +72,11 @@ export class LoginComponent implements OnInit {
               this.loginService.loginUser(this.user, headers).subscribe((e) => {
                 this.spinner.hide()
                 if (e.status == 200) {
+
+                  if(e.data.enabled == false){
+                    Swal.fire("Error","You are ban By Admin. Contact Admin!!","error")
+                    return;
+                  }
                   Swal.fire("Success", e.msg, "success")
                   this.loginService.storeToken(token.token);
                   // this.loginService.getCurrentUser().subscribe((e)=>{

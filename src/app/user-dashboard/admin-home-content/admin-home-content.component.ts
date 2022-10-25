@@ -91,4 +91,16 @@ export class AdminHomeContentComponent implements OnInit {
       })
     }
   }
+
+  banUser(id:any){
+    if (this.user.username == 'vraj@gmail.com' && id!=this.user.userid) {
+      this.spinner.show().then(() => {
+        this.adminService.banUser(id).subscribe();
+          this.spinner.hide()
+          Swal.fire("Success", "Ban User Successfully", "success")
+          this.ngOnInit()
+
+      })
+    }
+  }
 }

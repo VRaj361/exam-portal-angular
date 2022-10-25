@@ -78,6 +78,7 @@
                     <th>Phone Number</th>
                     <th>Show Details</th>
                     <th>{{user.username == 'vraj@gmail.com'?'Update to User':''}}</th>
+                    <th>{{user.username == 'vraj@gmail.com'?'Ban The User':''}}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -92,6 +93,7 @@
                     <td><button class="btn btn-primary color-white" (click)="showDetails(atte.userid)">Show
                         Details</button></td>
                     <td><button class="btn btn-primary color-white" (click)="changeToUser(atte.userid)" >{{user.username == 'vraj@gmail.com'?'Update to User':'Not Rights'}}</button></td>
+                    <td><button class="btn btn-primary color-white" (click)="banUser(atte.userid)" >{{user.username == 'vraj@gmail.com'?'Ban the User':'Not Rights'}}</button></td>
 
                   </tr>
 

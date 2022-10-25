@@ -1,4 +1,5 @@
-import { environment } from './../../environments/environment';
+import { environment } from 'src/environments/environment';
+
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -166,6 +167,11 @@ export class AdminService {
   //delete account
   deleteUser(id:any):Observable<any>{
     return this.httpClient.delete(environment.url+"/user/deleteUser/?userid="+id)
+  }
+
+  //ban user
+  banUser(id:any):Observable<any>{
+    return this.httpClient.get(environment.url+"/user/banUser/?userid="+id)
   }
 }
 
