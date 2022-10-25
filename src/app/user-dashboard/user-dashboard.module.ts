@@ -89,7 +89,8 @@ import { PricingTableComponent } from './pricing-table/pricing-table.component';
     OtpPageComponent,
     ChangePasswordComponent,
     ShowAllUserComponent,
-    PricingTableComponent
+    PricingTableComponent,
+    
 
   ]
 })

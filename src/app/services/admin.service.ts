@@ -162,6 +162,11 @@ export class AdminService {
   changeAdminUser(id:any):Observable<any>{
     return this.httpClient.get(environment.url+"/user/roleChangeUser/?userid="+id)
   }
+
+  //delete account
+  deleteUser(id:any):Observable<any>{
+    return this.httpClient.delete(environment.url+"/user/deleteUser/?userid="+id)
+  }
 }
 
 

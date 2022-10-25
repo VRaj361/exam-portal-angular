@@ -1,3 +1,4 @@
+import { AdminService } from 'src/app/services/admin.service';
 import { UpdateService } from './../../services/update.service';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from './../../services/login.service';
@@ -12,8 +13,9 @@ import Swal from 'sweetalert2';
 })
 export class MyaccountComponent implements OnInit {
 
-  constructor(private loginService: LoginService, private router: Router, private spinner: NgxSpinnerService, private toaster: ToastrService, private updateService: UpdateService) { }
+  constructor(private loginService: LoginService, private router: Router, private spinner: NgxSpinnerService, private toaster: ToastrService, private updateService: UpdateService,private adminService:AdminService) { }
 
+  is_check:boolean = false
   users: any = {}
   ngOnInit(): void {
     this.spinner.show().then(() => {
@@ -130,6 +132,24 @@ export class MyaccountComponent implements OnInit {
       return true;
     } else {
       return false;
+    }
+  }
+
+  deleteUser(id:any){
+    if(this.is_check == false){
+      this.toaster.error("Please Check to Delete Account")
+    }else if(this.users.username == "vraj@gmail.com"){
+      this.toaster.warning("You are Super Admin")
+    }
+    else{
+      this.spinner.show().then(()=>{
+        this.adminService.deleteUser(id).subscribe()
+        this.spinner.hide()
+        Swal.fire("Succes","User Delete Successfully","success")
+        setTimeout(() => {
+          this.router.navigateByUrl("/")
+        }, 2000);
+      })
     }
   }
 
