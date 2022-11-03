@@ -28,8 +28,17 @@
 
     </div>
   </div>
-  <div class="divider">
-    <button class="btn btn-primary m-2 border-purple color-white text-center" (click)="startExam()" >Start the Exam</button>
+  <div style="text-align: center; margin: 10px;">
+    <form [formGroup]="capcha" style="display: inline-block;">
+      <ngx-recaptcha2 #captchaElem
+        [siteKey]="siteKey"
 
+        formControlName="recaptcha">
+      </ngx-recaptcha2>
+    </form>
+  </div>
+  <div class="divider">
+
+    <!-- <button class="btn btn-primary m-2 border-purple color-white text-center" (click)="startExam()" >Start the Exam</button> -->
   </div>
 </div>

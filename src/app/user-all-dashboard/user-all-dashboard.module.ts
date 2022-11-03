@@ -10,6 +10,8 @@ import { StartQuizComponent } from './start-quiz/start-quiz.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
+import {NgxCaptchaModule} from 'ngx-captcha';
+
 @NgModule({
   declarations: [
     ShowUserQuizzesComponent,
@@ -19,8 +21,8 @@ import { MatCardModule } from '@angular/material/card';
   imports: [
     CommonModule,
     RouterModule,
-
-
+    ReactiveFormsModule,
+    NgxCaptchaModule,
     FormsModule,
     MatProgressSpinnerModule,
     BrowserAnimationsModule,

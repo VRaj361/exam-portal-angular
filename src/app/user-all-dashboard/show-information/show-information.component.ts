@@ -5,14 +5,20 @@ import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
+import { FormGroup,Validators,FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-show-information',
   templateUrl: './show-information.component.html',
   styleUrls: ['./show-information.component.css']
 })
 export class ShowInformationComponent implements OnInit {
-
-  constructor(private spinner: NgxSpinnerService, private router: Router, private toater: ToastrService, private adminService: AdminService,private loginService:LoginService) { }
+  protected capcha: FormGroup;
+  constructor(private spinner: NgxSpinnerService, private router: Router, private toater: ToastrService, private adminService: AdminService,private loginService:LoginService,private formBuilder: FormBuilder) {
+    this.capcha = this.formBuilder.group({
+      recaptcha: ['', Validators.required]
+    });
+  }
+  siteKey:string="6LcV_NUiAAAAAC4UGTEwsyRXwfgKQ9MU7lMqCkXW"
   quiz: any = {}
   ngOnInit(): void {
     let id = sessionStorage.getItem("quizid")
@@ -38,6 +44,17 @@ export class ShowInformationComponent implements OnInit {
       Swal.fire("Error", "Somethings went wrong", "error")
       this.router.navigateByUrl("/user/showQuizzes")
     }
+
+    const clear = setInterval(()=>{
+      console.log("in")
+      if(this.capcha.touched && this.capcha.value.recapcha!=""){
+        this.startExam()
+        clearInterval(clear)
+      }
+    },2000)
+
+
+
   }
   attempt:any={
     "quiz":{
@@ -47,6 +64,7 @@ export class ShowInformationComponent implements OnInit {
       "userid":""
     }
   }
+
   startExam(){
     this.spinner.show().then(() => {
       this.loginService.getCurrentUser().subscribe((data) => {
@@ -85,10 +103,6 @@ export class ShowInformationComponent implements OnInit {
         this.router.navigateByUrl("/user")
       })
     })
-
-
-
-
   }
 
 }

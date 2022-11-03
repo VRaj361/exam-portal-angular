@@ -14,7 +14,8 @@ import { CssJsFilesComponent } from './css-js-files/css-js-files.component';
 import { PageNotFountComponent } from './page-not-fount/page-not-fount.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Router,ActivatedRoute } from '@angular/router';
-import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgModel, ReactiveFormsModule} from '@angular/forms';
+import { NgxCaptchaModule } from 'ngx-captcha';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from "@angular/common/http";
@@ -44,7 +45,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
     NgxSpinnerModule,
     UserAllDashboardModule,
     MatProgressSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    NgxCaptchaModule
 
 
 

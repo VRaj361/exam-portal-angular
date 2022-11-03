@@ -19,6 +19,7 @@ export class StartQuizComponent implements OnInit {
   constructor(private router: Router, private locationSta: LocationStrategy, private adminService: AdminService, private spinner: NgxSpinnerService, private toaster: ToastrService, private loginService: LoginService) {
 
   }
+
   ele = document.documentElement
   questions: Array<any> = []
   attemptQuestions = 0
@@ -237,7 +238,9 @@ export class StartQuizComponent implements OnInit {
 
   printResult() {
     window.print()
-    this.router.navigateByUrl("/user")
+    setTimeout(() => {
+      this.router.navigateByUrl("/user")
+    }, 2000);
   }
 
 }
