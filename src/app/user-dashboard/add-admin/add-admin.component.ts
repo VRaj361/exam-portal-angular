@@ -1,3 +1,4 @@
+import { LoginService } from 'src/app/services/login.service';
 import { SignupService } from './../../services/signup.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -13,10 +14,20 @@ declare function initPasswordToggle(): any;
 })
 export class AddAdminComponent implements OnInit {
 
-  constructor(private toaster: ToastrService, private signupService: SignupService, private router: Router,private spinner: NgxSpinnerService) { }
+  constructor(private toaster: ToastrService, private signupService: SignupService, private router: Router,private spinner: NgxSpinnerService,private loginService:LoginService) { }
 
   ngOnInit(): void {
     initPasswordToggle()
+    this.loginService.getCurrentUser().subscribe((data) => {
+      if(data.username != "vraj@gmail.com"){
+        Swal.fire("Warning","Not have Permission to Add Admin","warning")
+        this.router.navigateByUrl("/admin")
+      }
+    },error=>{
+      this.spinner.hide()
+      Swal.fire("Error","Something went wrong","error")
+      this.router.navigateByUrl("/admin")
+    })
   }
 
   is_checked: boolean = false;
